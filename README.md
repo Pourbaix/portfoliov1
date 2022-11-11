@@ -1,2 +1,5 @@
 # portfoliov1
-The first iterration of my portfolio
+
+This is the first iterration of my portfolio !
+
+To run in developpement mode run `npm run dev`.

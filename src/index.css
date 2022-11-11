@@ -1,0 +1,127 @@
+:root {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: var(--second-color);
+	background-color: var(--main-color);
+	box-shadow: inset 0px 0px 60px -35px var(--second-color);
+
+	--main-color: rgba(240, 240, 240);
+	--second-color: #232323;
+	--third-color: #de0000;
+
+	/* background-image: url("./assets/backimage.svg"); */
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+a {
+	font-weight: 500;
+	color: #646cff;
+	text-decoration: inherit;
+}
+a:hover {
+	color: #535bf2;
+}
+
+body {
+	margin: 0;
+	/* display: flex; */
+	/* place-items: center; */
+	min-width: 320px;
+	min-height: 100%;
+}
+
+h1 {
+	font-size: 3.2em;
+	line-height: 1.1;
+}
+
+::-webkit-scrollbar {
+	/* the scrollbar. */
+	width: calc(5px);
+	background: none;
+}
+::-webkit-scrollbar-button {
+	display: none;
+	/* the buttons on the scrollbar (arrows pointing upwards and downwards). */
+}
+::-webkit-scrollbar-thumb {
+	/* the draggable scrolling handle. */
+	/* background: #383838; */
+	background: grey;
+	/* border-radius: 5px; */
+	/* padding-right: 5px; */
+}
+::-webkit-scrollbar-track {
+	/* the track (progress bar) of the scrollbar. */
+	background: var(--second-color);
+}
+::-webkit-scrollbar-track-piece {
+	/* the track (progress bar) NOT covered by the handle. */
+	background: none;
+}
+/* ::-webkit-scrollbar-corner {
+	the bottom corner of the scrollbar, where both horizontal and vertical scrollbars meet.
+}
+::-webkit-resizer {
+	the draggable resizing handle that appears at the bottom corner of some elements.
+} */
+
+/* /!\ Refaire cette partie  */
+
+/* @media (prefers-color-scheme: light) {
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
+	a:hover {
+		color: #747bff;
+	}
+	button {
+		background-color: #f9f9f9;
+	}
+} */
+
+/* ------------------------------------------- */
+
+@font-face {
+	font-family: PaytoneOne;
+	src: url("./assets/fonts/PaytoneOne-Regular.ttf");
+}
+
+@font-face {
+	font-family: Abel;
+	src: url("./assets/fonts/Abel-Regular.ttf");
+}
+
+@font-face {
+	font-family: Asap;
+	src: url("./assets/fonts/Asap-Regular.ttf");
+}
+
+@font-face {
+	font-family: Lexend;
+	src: url("./assets/fonts/Lexend-Regular.ttf");
+}
+
+@font-face {
+	font-family: Orbitron;
+	src: url("./assets/fonts/Orbitron-Regular.ttf");
+}
+
+@font-face {
+	font-family: Prompt;
+	src: url("./assets/fonts/Prompt-Regular.ttf");
+}
+
+@font-face {
+	font-family: RussoOne;
+	src: url("./assets/fonts/RussoOne-Regular.ttf");
+}

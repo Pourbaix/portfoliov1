@@ -1,0 +1,10 @@
+Bar gauche avec lien github, etc => anim 
+
+Texte qui passe en dessous du header => corriger => blur ? backdrop-filter 
+
+revoir le button enter 
+
+revoir le main header 
+
+Animer page entrer dans le site 
+ 

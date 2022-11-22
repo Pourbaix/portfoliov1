@@ -7,4 +7,11 @@ revoir le button enter
 revoir le main header 
 
 Animer page entrer dans le site 
+
+- Header rétractable 
+
+- Finir Knowledges
  
+effet hud sur knowledge (logo 3D + knowledges) avec barres => Skill et love  
+
+

@@ -10,6 +10,7 @@ function SocialBar() {
 				<a
 					className="element"
 					href="https://github.com/Pourbaix"
+					target="_blank"
 					id="github"
 				>
 					<DiGithubBadge size="4vh" className="icon" />

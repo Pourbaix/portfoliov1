@@ -6,11 +6,12 @@
 	color-scheme: light dark;
 	color: var(--second-color);
 	background-color: var(--main-color);
-	box-shadow: inset 0px 0px 60px -35px var(--second-color);
+	box-shadow: inset 0px 0px 60px -10px var(--second-color);
 
-	--main-color: rgba(240, 240, 240);
+	--main-color: #f0f0f0;
 	--second-color: #232323;
 	--third-color: #de0000;
+	--fourth-color: #2e2e2e;
 
 	/* background-image: url("./assets/backimage.svg"); */
 
@@ -35,7 +36,7 @@ body {
 	/* display: flex; */
 	/* place-items: center; */
 	min-width: 320px;
-	min-height: 100%;
+	/* min-height: 100%; */
 }
 
 h1 {

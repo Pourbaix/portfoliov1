@@ -100,7 +100,7 @@ const Grid = styled.div`
 	/* background-image: url("./src/assets/backimage.svg");
 	background-size: 1%; */
 	/* background: grey; */
-	opacity: 0.8;
+	opacity: 1;
 	/* box-shadow: inset 0px 0px 60px -35px black; */
 	z-index: 1;
 

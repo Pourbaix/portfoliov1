@@ -14,6 +14,7 @@
 }
 .counter::after {
 	content: counter(num) "%";
+	// transform: rotate3d();
 }
 
 @keyframes counter {

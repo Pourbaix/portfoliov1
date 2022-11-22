@@ -4,33 +4,51 @@ import SocialBar from "./SocialBar";
 import CornerLogo from "./CornerLogo";
 import AboutMe from "./AboutMe";
 import MyProjects from "./MyProjects";
+import Knowledges from "./Knowledges";
 import { useEffect, useRef } from "react";
 
 function Portfolio() {
 	const aboutMe = useRef(null);
 	const myProjects = useRef(null);
+	const knowledges = useRef(null);
 
-	const testFunction = (divRef) => {
-		if (divRef) {
-			myProjects.current.scrollIntoView({
-				behavior: "smooth",
-				block: "nearest",
-				inline: "center",
-			});
-			console.log(myProjects.current);
+	const scrollToComponent = (component) => {
+		component.scrollIntoView({
+			behavior: "smooth",
+			block: "center",
+			inline: "center",
+		});
+	};
+
+	const scrollFunction = (divRef) => {
+		if (divRef == 1) {
+			scrollToComponent(myProjects.current);
+		} else if (divRef == 2) {
+			scrollToComponent(knowledges.current);
 		} else {
-			aboutMe.current.scrollIntoView(false);
-			console.log(aboutMe.current);
+			scrollToComponent(aboutMe.current);
 		}
+		// switch (divRef) {
+		// 	case 0:
+		// 		scrollToComponent(aboutMe.current);
+		// 		console.log("hello 0");
+		// 	case 1:
+		// 		scrollToComponent(myProjects.current);
+		// 		console.log("hello 1");
+		// 	case 2:
+		// 		scrollToComponent(knowledges.current);
+		// 		console.log("hello 2");
+		// }
 	};
 
 	return (
 		<Main>
-			<Header onSwapToContent={testFunction} />
+			<Header onSwapToContent={scrollFunction} />
 			<SocialBar />
 			<Content>
 				<AboutMe ref={aboutMe} />
 				<MyProjects ref={myProjects} />
+				<Knowledges ref={knowledges} />
 			</Content>
 			<CornerLogo />
 		</Main>
@@ -39,7 +57,7 @@ function Portfolio() {
 
 const Main = styled.div`
 	width: 100%;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	display: flex;
 	flex-direction: column;
 	/* justify-content: center; */
@@ -53,8 +71,7 @@ const Content = styled.div`
 	/* height: 3500px; */
 	max-width: 1600px;
 	width: 100%;
-	padding-top: 10vh;
-	padding-bottom: 5vh;
+	padding-bottom: 100px;
 	/* border: 1px solid green; */
 	/* background: rgb(200, 200, 200, 0.05); */
 	overflow-y: visible;
@@ -63,18 +80,6 @@ const Content = styled.div`
 	align-items: center;
 	z-index: 5;
 	gap: 50px;
-	scroll-snap-type: y mandatory;
-	h1 {
-		font-family: PaytoneOne;
-	}
-	.myProjects {
-		width: 80%;
-		height: 80vh;
-		border: 1px solid var(--third-color);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
 `;
 
 export default Portfolio;

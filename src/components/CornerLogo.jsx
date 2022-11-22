@@ -4,7 +4,7 @@ function CornerLogo() {
 	return (
 		<Main>
 			<Content>
-				<img src="/logo/fullLogo.svg" alt="Logo of my portfolio." />
+				<img src="/logo/fullLogo2.svg" alt="Logo of my portfolio." />
 			</Content>
 		</Main>
 	);

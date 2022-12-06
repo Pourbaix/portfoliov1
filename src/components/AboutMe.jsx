@@ -18,14 +18,28 @@ const AboutMe = forwardRef((props, ref) => {
 						</a>
 					</p>
 				</div>
-				<div className="header">
-					<div style={{ width: "100%" }}>
+				<div className="about_content">
+					<div className="header">
+						{/* <span
+							style={{
+								color: getComputedStyle(
+									document.documentElement
+								).getPropertyValue("--third-color"),
+								fontSize: "25px",
+							}}
+						>
+							3.
+						</span> */}
 						<h1>About Me</h1>
 					</div>
 					<p>
-						My name is Michaël also nown as MaZeppAa, and i am a
-						frontend web developper ! I love learning new things
-						about coding and all other stuff.
+						My name is{" "}
+						<b style={{ color: "red", fontFamily: "RussoOne" }}>
+							Michaël
+						</b>{" "}
+						also known as MaZeppAa, and i am a web developper ! I
+						love learning new things about coding and all other
+						stuff. I am mainly focused on frontend developpement.
 					</p>
 					<h3>What I like to do:</h3>
 					<div className="like">
@@ -58,18 +72,19 @@ const Main = styled.div`
 		padding: 50px;
 		overflow: visible;
 		position: relative;
-		transition: 0.4s linear;
+		transition: 0.2s linear;
 		text-align: left;
 		max-width: 50%;
 		gap: 25px;
 		h1 {
-			font-family: RussoOne, monospace;
+			font-family: Russo One, monospace;
 			letter-spacing: 4px;
 			/* word-spacing: 35px; */
 			justify-self: flex-start;
 			position: relative;
 			text-align: left;
 			margin: 0;
+			margin-left: 25px;
 		}
 		h1::after {
 			position: absolute;
@@ -81,28 +96,47 @@ const Main = styled.div`
 			background: rgb(240, 240, 240);
 			animation: typingContent 0.65s steps(6) 2s forwards;
 		}
-		img {
-			height: auto;
-			width: 250px;
-			border-radius: 2px;
+		h1::before {
+			content: "1.";
+			/* height: 100%;
+			width: 15%; */
+			left: -8%;
+			top: 40%;
+			color: var(--third-color);
+			text-align: center;
+			font-size: 25px;
+			position: absolute;
+			letter-spacing: 1px;
 			opacity: 0;
-			box-shadow: 0 5px 10px -5px var(--second-color);
-			animation: fadeIn 0.5s ease 2.5s forwards;
-			filter: blur(0.5px);
+			animation: fadeIn 1s ease 2s forwards;
+			/* outline: 1px solid red; */
 		}
 		.profile_pic {
 			position: relative;
-			height: fit-content;
+			/* height: fit-content; */
+			height: auto;
 			width: fit-content;
+			display: flex;
 			transition: 0.5s ease;
-			filter: saturate(0.5);
+			filter: saturate(0.3);
+			/* border: 1px solid var(--second-color); */
+			img {
+				height: auto;
+				width: 250px;
+				opacity: 0;
+				box-shadow: 0 5px 10px -5px var(--second-color);
+				animation: fadeIn 0.5s ease 2.5s forwards;
+				filter: blur(0.5px);
+				z-index: -1;
+				border-radius: 2px;
+			}
 			.credit {
 				position: absolute;
 				top: 90%;
 				margin: 0;
 				width: 100%;
 				text-align: center;
-				z-index: -1;
+				z-index: -2;
 				opacity: 0;
 				transition: 0.5s ease;
 				.author {
@@ -118,32 +152,38 @@ const Main = styled.div`
 			transition: 0.5s ease;
 			filter: saturate(1);
 			.credit {
-				top: 100%;
+				top: 102%;
 				opacity: 1;
 				transition: 0.5s ease;
 			}
 		}
-		.header {
+		.about_content {
 			display: flex;
 			flex-direction: column;
 			/* justify-content: center; */
 			align-items: center;
 			gap: 0px;
 			text-align: left;
+			.header {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
 			p {
-				font-family: Orbitron;
+				font-family: "Orbitron", sans-serif;
 				opacity: 0;
 				animation: fadeIn 0.5s ease 3s forwards;
 				text-align: left;
 				margin: 0;
 			}
 			h3 {
-				font-family: RussoOne, monospace;
+				font-family: Russo One, monospace;
 				text-align: left;
 				width: 100%;
 				margin: 10px 0 5px 0;
 				opacity: 0;
-				animation: fadeIn 0.5s ease 2s forwards;
+				animation: fadeIn 0.5s ease 3s forwards;
 			}
 			.like {
 				width: 100%;
@@ -194,18 +234,16 @@ const Main = styled.div`
 		transition: 0.5s ease;
 	}
 	.content:hover::after {
-		top: -50px;
-		left: -50px;
+		transform: translateY(-35px) translateX(-35px);
 		transition: 0.5s ease;
 	}
 	.content:hover::before {
-		bottom: -50px;
-		right: -50px;
+		transform: translateY(35px) translateX(35px);
 		transition: 0.5s ease;
 	}
 	.content:hover {
-		transform: scale(1.05);
-		transition: 0.4s ease;
+		transform: scale(1.02);
+		transition: 0.8s ease;
 	}
 	@keyframes typing {
 		100% {
@@ -244,21 +282,21 @@ const Main = styled.div`
 	@keyframes fadeInUp {
 		0% {
 			opacity: 0;
-			transform: translateY(-50%);
+			/* transform: translateY(-50%); */
 		}
 		100% {
 			opacity: 1;
-			transform: translateY(0);
+			/* transform: translateY(0); */
 		}
 	}
 	@keyframes fadeInBottom {
 		0% {
 			opacity: 0;
-			transform: translateY(50%);
+			/* transform: translateY(50%); */
 		}
 		100% {
 			opacity: 1;
-			transform: translateY(0);
+			/* transform: translateY(0); */
 		}
 	}
 	@keyframes fadeIn {

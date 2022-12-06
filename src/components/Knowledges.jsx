@@ -11,22 +11,57 @@ const Knowledges = forwardRef((props, ref) => {
 	const lastDiv = useRef(null);
 
 	const [name, setName] = useState("");
+	const [image, setImage] = useState("");
 	const [skill, setSkill] = useState("");
 	const [love, setLove] = useState("");
+	const [description, setDescription] = useState("");
 
 	const contentList = [
 		{
 			name: "React",
+			logo: "React.svg",
 			widthSkill: "60%",
 			widthLove: "80%",
 			description:
-				"I began learning React in 2020 for a school project and at the time I found it quite difficult. But now, with a bit more practice, this framework seems so interesting !",
+				"I began learning React in 2020 for a school project and at the time I found it quite difficult. But now, with a bit more practice, this framework looks so interesting and the possibilities seems endless!",
 		},
-		{ name: "Vue", widthSkill: "40%", widthLove: "60%" },
-		{ name: "TypeScript", widthSkill: "40%", widthLove: "20%" },
-		{ name: "JavaScript", widthSkill: "40%", widthLove: "80%" },
-		{ name: "CSS", widthSkill: "60%", widthLove: "100%" },
-		{ name: "Python", widthSkill: "20%", widthLove: "40%" },
+		{
+			name: "VueJS",
+			logo: "Vue.svg",
+			widthSkill: "40%",
+			widthLove: "60%",
+			description:
+				"This framework was introduced by a friend of mine. The learning curve is easier than React and i must admit that some things are more praticle in Vue than in React. But React stays my favorite framework.",
+		},
+		{
+			name: "TypeScript",
+			logo: "Typescript.svg",
+			widthSkill: "40%",
+			widthLove: "20%",
+			description:
+				"I began learning Typescript at the same time than Vue. I understand the positive points of this language compare to JavaScript, but when you code in TypeScript, it is so anoying !",
+		},
+		{
+			name: "JavaScript",
+			logo: "Javascript.svg",
+			widthSkill: "40%",
+			widthLove: "80%",
+			description: "Text desc",
+		},
+		{
+			name: "CSS",
+			logo: "css.svg",
+			widthSkill: "60%",
+			widthLove: "100%",
+			description: "Text desc",
+		},
+		{
+			name: "Python",
+			logo: "Python.svg",
+			widthSkill: "20%",
+			widthLove: "40%",
+			description: "Text desc",
+		},
 	];
 
 	// ----------------------------
@@ -57,14 +92,16 @@ const Knowledges = forwardRef((props, ref) => {
 	// ----------------------------
 	// changeDisplay(:element:)
 	// ----------------------------
-	// FR: Permet de changer ce qui est afficher dans le composant des détails
+	// FR: Permet de changer ce qui est affiché dans le composant des détails
 	// EN: Changes what is displayed on the technoly details component
 
 	const changeDisplay = (element) => {
 		let selectedElement = getDivFromElement(element);
 		setName(contentList[selectedElement.id - 1]["name"]);
+		setImage(contentList[selectedElement.id - 1]["logo"]);
 		setSkill(contentList[selectedElement.id - 1]["widthSkill"]);
 		setLove(contentList[selectedElement.id - 1]["widthLove"]);
+		setDescription(contentList[selectedElement.id - 1]["description"]);
 	};
 
 	// ----------------------------
@@ -131,7 +168,21 @@ const Knowledges = forwardRef((props, ref) => {
 	return (
 		<Main ref={ref}>
 			<div className="content">
-				<h1 className="header">My knowledges</h1>
+				<div className="header_container">
+					<h1 className="header">
+						<span
+							style={{
+								color: getComputedStyle(
+									document.documentElement
+								).getPropertyValue("--third-color"),
+								fontSize: "25px",
+							}}
+						>
+							3.
+						</span>
+						My knowledges
+					</h1>
+				</div>
 				<div className="main_content">
 					<div className="selector" ref={selectorContainer}>
 						<div
@@ -220,7 +271,13 @@ const Knowledges = forwardRef((props, ref) => {
 						</div>
 					</div>
 					<div className="content_display">
-						<KnowledgeDesc name={name} skill={skill} love={love} />
+						<KnowledgeDesc
+							name={name}
+							image={image}
+							skill={skill}
+							love={love}
+							description={description}
+						/>
 					</div>
 				</div>
 			</div>
@@ -251,12 +308,31 @@ const Main = styled.div`
 		padding: 25px 25px;
 		/* box-shadow: black 0 0 40px -35px; */
 		/* background-color: var(--fourth-color); */
-		.header {
-			font-family: RussoOne, monospace;
-			margin-bottom: 0;
-			color: var(--second-color);
-			letter-spacing: 1px;
+		.header_container {
+			width: 100%;
+			/* display: flex; */
+			.header {
+				font-family: Russo One, monospace;
+				position: relative;
+				margin-bottom: 40px;
+				padding-bottom: 2px;
+				/* padding-left: 30px; */
+				color: var(--second-color);
+				/* letter-spacing: 1px; */
+				/* width: 100%; */
+				text-align: left;
+				justify-self: left;
+				font-size: 40px;
+				/* border-top: 2px dashed var(--second-color); */
+				border-bottom: 2px dashed var(--second-color);
+			}
 		}
+		/* .header::before {
+			position: absolute;
+			content: "▹";
+			left: 0;
+			width: 30px;
+		} */
 		.main_content {
 			display: flex;
 			flex-direction: row;
@@ -391,7 +467,7 @@ const Main = styled.div`
 			}
 			.content_display {
 				width: 75%;
-				border: 1px solid blue;
+				/* border: 1px solid blue; */
 				height: 500px;
 			}
 		}

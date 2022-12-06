@@ -2,7 +2,7 @@ import styled from "styled-components";
 function Logo() {
 	return (
 		<Main>
-			<div className="logoContainer">
+			<div className="logo_container">
 				<div className="line shape1"></div>
 				<div className="line shape2"></div>
 				<div className="line shape3"></div>
@@ -25,7 +25,7 @@ const Main = styled.div`
 	flex-direction: column;
 	gap: 0vh;
 	margin-bottom: 50px;
-	.logoContainer {
+	.logo_container {
 		position: relative;
 		display: flex;
 		justify-content: center;

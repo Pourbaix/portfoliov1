@@ -6,11 +6,15 @@ import AboutMe from "./AboutMe";
 import MyProjects from "./MyProjects";
 import Knowledges from "./Knowledges";
 import { useEffect, useRef } from "react";
+import { useState } from "react";
 
 function Portfolio() {
 	const aboutMe = useRef(null);
 	const myProjects = useRef(null);
 	const knowledges = useRef(null);
+	const container = useRef(null);
+
+	const [myProjectsVisibility, setMyProjectsVisibility] = useState("none");
 
 	const scrollToComponent = (component) => {
 		component.scrollIntoView({
@@ -41,13 +45,30 @@ function Portfolio() {
 		// }
 	};
 
+	// const scrolled = () => {
+	// 	console.log(
+	// 		parseInt(myProjects.current.getBoundingClientRect().top),
+	// 		parseInt(getComputedStyle(myProjects.current).height)
+	// 	);
+	// 	if (
+	// 		myProjects.current.getBoundingClientRect().top <
+	// 		parseInt(getComputedStyle(myProjects.current).height) / 1.0
+	// 	) {
+	// 		setMyProjectsVisibility("flex");
+	// 	}
+	// };
+	// window.onscroll = scrolled;
+
 	return (
 		<Main>
 			<Header onSwapToContent={scrollFunction} />
 			<SocialBar />
-			<Content>
+			<Content ref={container}>
 				<AboutMe ref={aboutMe} />
-				<MyProjects ref={myProjects} />
+				<MyProjects
+					ref={myProjects}
+					visibility={myProjectsVisibility}
+				/>
 				<Knowledges ref={knowledges} />
 			</Content>
 			<CornerLogo />

@@ -16,7 +16,21 @@ const MyProjects = forwardRef((props, ref) => {
 	return (
 		<Main ref={ref}>
 			<div className="content">
-				<h1>My projects</h1>
+				<div>
+					<h1>
+						<span
+							style={{
+								color: getComputedStyle(
+									document.documentElement
+								).getPropertyValue("--third-color"),
+								fontSize: "25px",
+							}}
+						>
+							2.
+						</span>
+						My projects
+					</h1>
+				</div>
 				<p>
 					Here is a short list of my{" "}
 					<a
@@ -129,7 +143,7 @@ const MyProjects = forwardRef((props, ref) => {
 							/>
 						</div>
 					</div>
-					<div className="card">
+					<div className="card" id="no_red">
 						<p className="card_title" id="spaceDream">
 							Space DREAM
 						</p>
@@ -170,7 +184,7 @@ const Main = styled.div`
 	align-items: center;
 	justify-content: center;
 	h1 {
-		font-family: RussoOne, monospace;
+		font-family: Russo One, monospace;
 		margin: 0;
 	}
 	p {
@@ -242,13 +256,13 @@ const Main = styled.div`
 				position: relative;
 				border-radius: 5px;
 				overflow: hidden;
-				box-shadow: black 0px 20px 25px -25px;
+				box-shadow: black 0px 20px 20px -25px;
 				p {
 					margin: 0;
 					color: var(--second-color);
 				}
 				.card_title {
-					font-family: ;
+					font-family: Orbitron;
 					font-size: 30px;
 					color: var(--second-color);
 					padding-top: 15px;
@@ -355,7 +369,7 @@ const Main = styled.div`
 					transition: 0.8s ease;
 				}
 				.technologies {
-					bottom: 0;
+					transform: translateY(-100%);
 					opacity: 1;
 					transition: 0.4s ease;
 				}
@@ -377,6 +391,9 @@ const Main = styled.div`
 				box-shadow: black 0px 20px 30px -20px;
 				outline: 1px solid var(--third-color);
 			}
+			#no_red:hover {
+				outline: none;
+			}
 		}
 	}
 	.content::before {
@@ -386,10 +403,11 @@ const Main = styled.div`
 		height: 15%;
 		background: none;
 		position: absolute;
-		top: -15px;
-		right: -15px;
+		top: -20px;
+		right: -20px;
 		border-top: 2px solid var(--third-color);
 		border-right: 2px solid var(--third-color);
+		transition: 0.5s ease;
 	}
 	.content::after {
 		/* opacity: 0; */
@@ -398,10 +416,19 @@ const Main = styled.div`
 		height: 15%;
 		background: none;
 		position: absolute;
-		bottom: -15px;
-		left: -15px;
+		bottom: -20px;
+		left: -20px;
 		border-bottom: 2px solid var(--third-color);
 		border-left: 2px solid var(--third-color);
+		transition: 0.5s ease;
+	}
+	.content:hover::after {
+		transform: translateY(30px) translateX(-30px);
+		transition: 0.5s ease;
+	}
+	.content:hover::before {
+		transform: translateY(-30px) translateX(30px);
+		transition: 0.5s ease;
 	}
 	@media (max-height: 900px) {
 		.content {

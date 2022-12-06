@@ -5,41 +5,52 @@ import { BsPin } from "react-icons/bs";
 import { useRef, useState } from "react";
 
 function Header(props) {
-	const [pinEnabled, setPinEnabled] = useState(true);
+	const pinEnabled = useRef(true);
 
 	const pin = useRef(null);
 	const header = useRef(null);
+	const headerContainer = useRef(null);
 
 	const swapHeaderMode = () => {
 		// console.log(pin.current);
-		if (pinEnabled) {
+		if (pinEnabled.current) {
+			headerContainer.current.addEventListener("mouseenter", showHeader);
+			headerContainer.current.addEventListener("mouseleave", hideHeader);
 			pin.current.childNodes[0].style.color = "var(--main-color)";
-			setPinEnabled(false);
+			pinEnabled.current = false;
 		} else {
+			headerContainer.current.removeEventListener(
+				"mouseenter",
+				showHeader
+			);
+			headerContainer.current.removeEventListener(
+				"mouseleave",
+				hideHeader
+			);
 			pin.current.childNodes[0].style.color = "var(--third-color)";
-			setPinEnabled(true);
+			pinEnabled.current = true;
+			pin.current.style.top = "24px";
+			header.current.style.top = "";
 		}
 	};
 
 	const showHeader = () => {
-		if (!pinEnabled) {
+		if (!pinEnabled.current) {
+			// console.log("show");
 			pin.current.style.top = "24px";
 			header.current.style.top = "";
 		}
 	};
 	const hideHeader = () => {
-		if (!pinEnabled) {
+		if (!pinEnabled.current) {
+			// console.log("hide");
 			pin.current.style.top = "-26px";
 			header.current.style.top = "-50px";
 		}
 	};
 	return (
 		<Main>
-			<div
-				className="content"
-				onMouseEnter={showHeader}
-				onMouseLeave={hideHeader}
-			>
+			<div className="content" ref={headerContainer}>
 				<div className="header_pin" ref={pin}>
 					<BsPin
 						className="pin_logo"
@@ -143,6 +154,7 @@ const Main = styled.div`
 				align-items: center;
 				gap: 5%;
 				width: 100%;
+				transform: translateX(-100vw);
 				/* max-width: 1200px; */
 				height: 100%;
 				/* background: #383838; */
@@ -246,11 +258,11 @@ const Main = styled.div`
 	}
 	@keyframes openHeader {
 		0% {
-			width: 0;
+			transform: translateX(-100vw);
 		}
 		100% {
 			opacity: 1;
-			width: 100%;
+			transform: translateX(0);
 		}
 	}
 	@keyframes appearTab {

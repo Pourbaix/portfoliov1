@@ -260,7 +260,8 @@ const Content = styled.div`
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		background: var(--second-color);
+		background: var(--main-color);
+		border: 1px solid var(--second-color);
 		overflow: visible;
 		align-items: center;
 		justify-content: center;
@@ -277,6 +278,7 @@ const Content = styled.div`
 			justify-content: center;
 			align-items: center;
 			gap: 25%;
+			color: var(--second-color);
 			p {
 				opacity: 0;
 				margin: 0;
@@ -291,7 +293,7 @@ const Content = styled.div`
 				width: fit-content;
 				font-size: 6em;
 				/* font-weight: bold; */
-				font-family: RussoOne;
+				font-family: Russo One;
 			}
 		}
 
@@ -299,13 +301,13 @@ const Content = styled.div`
 			position: relative;
 			display: flex;
 			z-index: 8;
-			transition: 0.5s ease;
+			transition: 0.3s ease;
 			margin-top: 25px;
 		}
 
 		.buttonContainer:hover {
 			transform: scale(1.05);
-			transition: 0.5s ease;
+			transition: 0.3s ease;
 			/* box-shadow: black 0px 20px 20px -25px; */
 		}
 
@@ -351,19 +353,19 @@ const Content = styled.div`
 			opacity: 0;
 			position: relative;
 			text-decoration: none;
-			background-color: rgb(0, 0, 0, 0.05);
-			border: 1px solid var(--main-color);
+			background-color: rgb(0, 0, 0, 0.8);
+			border: 1px solid var(--second-color);
 			padding: 15px 35px;
 			font-size: 35px;
 			justify-self: center;
 			animation: fadeIn 1s ease 1s forwards;
 			cursor: pointer;
-			transition: 1s ease;
+			transition: 0.5s ease;
 			font-family: Orbitron;
 		}
 		.enterButton:hover {
 			color: var(--main-color);
-			transition: 1s ease;
+			transition: 0.5s ease;
 		}
 	}
 	.main_content::after {
@@ -372,8 +374,8 @@ const Content = styled.div`
 		height: 15%;
 		background: none;
 		position: absolute;
-		top: -2%;
-		left: -0.8%;
+		top: -15px;
+		left: -15px;
 		border-top: 2px solid var(--third-color);
 		border-left: 2px solid var(--third-color);
 	}
@@ -383,8 +385,8 @@ const Content = styled.div`
 		height: 15%;
 		background: none;
 		position: absolute;
-		bottom: -2%;
-		right: -0.8%;
+		bottom: -15px;
+		right: -15px;
 		border-bottom: 2px solid var(--third-color);
 		border-right: 2px solid var(--third-color);
 	}

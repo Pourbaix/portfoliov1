@@ -6,7 +6,7 @@ import ReactLogo from "/src/assets/logo/knowledges/React.svg";
 import VueJSLogo from "/src/assets/logo/knowledges/Vue.svg";
 import TypeScriptLogo from "/src/assets/logo/knowledges/Typescript.svg";
 import JavaScriptLogo from "/src/assets/logo/knowledges/Javascript.svg";
-import CSSLogo from "/src/assets/logo/knowledges/CSS.svg";
+import CSSLogo from "/src/assets/logo/knowledges/css.svg";
 import DjangoLogo from "/src/assets/logo/knowledges/Django.svg";
 
 const Knowledges = forwardRef((props, ref) => {

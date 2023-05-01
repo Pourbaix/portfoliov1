@@ -12,10 +12,7 @@ const KnowledgeDesc = (props) => {
 						<div className="desc">
 							<div className="logo_container">
 								<img
-									src={
-										"/src/assets/logo/knowledges/" +
-										props.image
-									}
+									src={props.image}
 									className="logo"
 									style={{
 										filter:
@@ -155,7 +152,7 @@ const Content = styled.div`
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-image: url("/src/assets/backimage.svg");
+			background-image: url("/backimage.svg");
 			background-size: 15px;
 			box-shadow: inset 0 0 5px 10px var(--main-color);
 			.logo {

@@ -12,6 +12,15 @@ import { IoLogoVue } from "react-icons/io5";
 import ProjectDescription from "./ProjectDescription";
 import { useState } from "react";
 
+import TaalToolBoxLogo from "/src/assets/logo/projects/taalToolBox.svg";
+import TaalToolBoxImage from "/src/assets/images/taalToolBox-min.png";
+
+import CarRentalLogo from "/src/assets/logo/projects/carRental.svg";
+import CarRentalImage from "/src/assets/images/carRental-min.png";
+
+import SpaceDreamLogo from "/src/assets/logo/projects/spaceDream.svg";
+import SpaceDreamImage from "/src/assets/images/spaceDream-min.png";
+
 const MyProjects = forwardRef((props, ref) => {
 	const [modalState, setModalState] = useState(false);
 	const logoTaalToolBox = useRef(null);
@@ -61,7 +70,7 @@ const MyProjects = forwardRef((props, ref) => {
 						</p>
 						<div className="card_illustration">
 							<img
-								src="/src/assets/images/carRental-min.png"
+								src={CarRentalImage}
 								alt="carRental app preview image"
 								className="preview"
 							/>
@@ -72,7 +81,7 @@ const MyProjects = forwardRef((props, ref) => {
 								className="card_logo"
 							>
 								<img
-									src="/src/assets/logo/projects/carRental.svg"
+									src={CarRentalLogo}
 									alt="carRental app logo"
 								/>
 							</a>
@@ -117,7 +126,7 @@ const MyProjects = forwardRef((props, ref) => {
 						</p>
 						<div className="card_illustration">
 							<img
-								src="/src/assets/images/taalToolBox-min.png"
+								src={TaalToolBoxImage}
 								alt="TaalToolBox app preview image"
 								className="preview"
 							/>
@@ -128,7 +137,7 @@ const MyProjects = forwardRef((props, ref) => {
 								className="card_logo"
 							>
 								<img
-									src="/src/assets/logo/projects/taalToolBox.svg"
+									src={TaalToolBoxLogo}
 									alt="TaalToolBox app logo"
 								/>
 							</a>
@@ -168,12 +177,12 @@ const MyProjects = forwardRef((props, ref) => {
 						</p>
 						<div className="card_illustration">
 							<img
-								src="/src/assets/images/spaceDream-min.png"
+								src={SpaceDreamImage}
 								alt="Unknown app preview image"
 								className="preview"
 							/>
 							<img
-								src="/src/assets/logo/projects/spaceDream.svg"
+								src={SpaceDreamLogo}
 								alt="Unknown app logo"
 								className="card_logo"
 							/>

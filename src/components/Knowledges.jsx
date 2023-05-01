@@ -2,6 +2,13 @@ import styled from "styled-components";
 import { forwardRef, useRef, useState, memo, useEffect } from "react";
 import KnowledgeDesc from "./KnowledgeDesc";
 
+import ReactLogo from "/src/assets/logo/knowledges/React.svg";
+import VueJSLogo from "/src/assets/logo/knowledges/Vue.svg";
+import TypeScriptLogo from "/src/assets/logo/knowledges/Typescript.svg";
+import JavaScriptLogo from "/src/assets/logo/knowledges/Javascript.svg";
+import CSSLogo from "/src/assets/logo/knowledges/CSS.svg";
+import DjangoLogo from "/src/assets/logo/knowledges/Django.svg";
+
 const Knowledges = forwardRef((props, ref) => {
 	const rightSelector = useRef(null);
 	const leftSelector = useRef(null);
@@ -20,7 +27,7 @@ const Knowledges = forwardRef((props, ref) => {
 	const contentList = [
 		{
 			name: "React",
-			logo: "React.svg",
+			logo: ReactLogo,
 			color_theme: "rgb(97, 219, 251, 0.5)",
 			widthSkill: "60%",
 			widthLove: "80%",
@@ -29,7 +36,7 @@ const Knowledges = forwardRef((props, ref) => {
 		},
 		{
 			name: "VueJS",
-			logo: "Vue.svg",
+			logo: VueJSLogo,
 			color_theme: "rgb(65, 184, 130, 0.5)",
 			widthSkill: "40%",
 			widthLove: "60%",
@@ -38,7 +45,7 @@ const Knowledges = forwardRef((props, ref) => {
 		},
 		{
 			name: "TypeScript",
-			logo: "Typescript.svg",
+			logo: TypeScriptLogo,
 			color_theme: "rgb(0, 122, 204, 0.5)",
 			widthSkill: "40%",
 			widthLove: "40%",
@@ -47,7 +54,7 @@ const Knowledges = forwardRef((props, ref) => {
 		},
 		{
 			name: "JavaScript",
-			logo: "Javascript.svg",
+			logo: JavaScriptLogo,
 			color_theme: "rgb(50, 51, 48, 0.5)",
 			widthSkill: "60%",
 			widthLove: "80%",
@@ -56,7 +63,7 @@ const Knowledges = forwardRef((props, ref) => {
 		},
 		{
 			name: "CSS",
-			logo: "css.svg",
+			logo: CSSLogo,
 			color_theme: "rgb(41, 101, 241, 0.5)",
 			widthSkill: "60%",
 			widthLove: "100%",
@@ -65,7 +72,7 @@ const Knowledges = forwardRef((props, ref) => {
 		},
 		{
 			name: "Django",
-			logo: "Django.svg",
+			logo: DjangoLogo,
 			color_theme: "rgb(24, 128, 88, 0.5)",
 			widthSkill: "60%",
 			widthLove: "40%",
@@ -83,10 +90,7 @@ const Knowledges = forwardRef((props, ref) => {
 				updateElementClicked(e.target);
 			}}
 		>
-			<img
-				className="selector_logo"
-				src={"/src/assets/logo/knowledges/" + object.logo}
-			/>
+			<img className="selector_logo" src={object.logo} />
 		</div>
 	));
 

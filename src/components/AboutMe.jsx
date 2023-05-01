@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { forwardRef } from "react";
 
+import ProfilePic from "/src/assets/images/profile.jpg";
+
 const AboutMe = forwardRef((props, ref) => {
 	return (
 		<Main ref={ref}>
 			<div className="content">
 				<div className="profile_pic">
-					<img src="/profile.jpg" />
+					<img src={ProfilePic} />
 					<p className="credit">
 						Credits to{" "}
 						<a

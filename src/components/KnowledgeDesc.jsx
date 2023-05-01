@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import BackImage from "/src/assets/logo/knowledges/backimage.svg";
+
 const KnowledgeDesc = (props) => {
 	return (
 		<Main>
@@ -152,7 +154,7 @@ const Content = styled.div`
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-image: url("/backimage.svg");
+			background-image: url(BackImage);
 			background-size: 15px;
 			box-shadow: inset 0 0 5px 10px var(--main-color);
 			.logo {

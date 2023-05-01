@@ -1,4 +1,7 @@
 import styled from "styled-components";
+
+import LogoComponent from "/src/assets/logo/Logo.svg";
+
 function Logo() {
 	return (
 		<Main>
@@ -9,7 +12,7 @@ function Logo() {
 				<div className="line shape4"></div>
 				<div className="line shape5"></div>
 				<div className="line shape6"></div>
-				<img src="/logo/Logo.svg" alt="My portfolio logo" />
+				<img src={LogoComponent} alt="My portfolio logo" />
 			</div>
 			<div className="loading_message">Chargement du portfolio . . .</div>
 		</Main>

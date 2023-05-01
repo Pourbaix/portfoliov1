@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { AiOutlineUser, AiOutlineBook } from "react-icons/ai";
 import { HiOutlineBookOpen } from "react-icons/hi";
+import { BiCaretRightCircle } from "react-icons/bi";
 import { BsPin } from "react-icons/bs";
 import { useRef, useState } from "react";
 
@@ -45,7 +46,7 @@ function Header(props) {
 		if (!pinEnabled.current) {
 			// console.log("hide");
 			pin.current.style.top = "-26px";
-			header.current.style.top = "-50px";
+			header.current.style.top = "-52px";
 		}
 	};
 	return (
@@ -100,12 +101,18 @@ function Header(props) {
 							/>
 							<p className="sub_p">Knowledges</p>
 						</div>
-						<div id="tab4" className="tab">
-							<AiOutlineUser
+						<div
+							id="tab4"
+							className="tab"
+							onClick={() => {
+								props.onSwapToContent(3);
+							}}
+						>
+							<BiCaretRightCircle
 								id="tab4Icon"
 								className="header_icon"
 							/>
-							<p className="sub_p">About me</p>
+							<p className="sub_p">Activities</p>
 						</div>
 					</div>
 				</div>
@@ -166,6 +173,7 @@ const Main = styled.div`
 				box-shadow: black 0px 20px 45px -34px;
 				color: var(--main-color);
 				transition: 0.3s ease;
+				will-change: transform;
 				.tab {
 					font-size: 1.5em;
 					opacity: 0;

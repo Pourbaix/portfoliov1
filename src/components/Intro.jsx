@@ -11,54 +11,31 @@ function Home() {
 
 	const animatedDiv = useRef(null);
 
-	const Aymar = () => {
-		setTimeout(() => {
-			setShowIntro(false);
-		}, 4800);
-		setTimeout(() => {
-			setShowContent(true);
-		}, 5000);
-		setTimeout(() => {
-			setEnableStopAnim(true);
-		}, 6000);
-	};
-	Aymar();
+	// const Aymar = () => {
+	setTimeout(() => {
+		setShowIntro(false);
+	}, 4800);
+	// setTimeout(() => {
+	// 	setShowContent(true);
+	// }, 5000);
+	// setTimeout(() => {
+	// 	setEnableStopAnim(true);
+	// }, 6000);
+	// };
+	// Aymar();
 
-	const mouseIsOn = () => {
-		if (enableStopAnim) {
-			animatedDiv.current.style.animationPlayState = "paused";
-		}
-	};
+	// const mouseIsOn = () => {
+	// 	if (enableStopAnim) {
+	// 		animatedDiv.current.style.animationPlayState = "paused";
+	// 	}
+	// };
 
-	const mouseIsOut = () => {
-		animatedDiv.current.style.animationPlayState = "running";
-	};
+	// const mouseIsOut = () => {
+	// 	animatedDiv.current.style.animationPlayState = "running";
+	// };
 
 	return (
 		<Main>
-			{showContent ? (
-				<Content>
-					{/* <div className="fakeMargin"></div> */}
-					<div
-						className="main_content"
-						ref={animatedDiv}
-						onMouseEnter={mouseIsOn}
-						onMouseLeave={mouseIsOut}
-					>
-						<div className="text_content">
-							<p className="intro_sec">Welcome to my</p>
-							<p className="intro_main">Portfolio</p>
-						</div>
-						<div className="button_container">
-							<Link to="/portfolio">
-								<button className="enter_button">Enter</button>
-							</Link>
-						</div>
-					</div>
-				</Content>
-			) : (
-				""
-			)}
 			<Grid>
 				<div className="anim_container">
 					<div className="anim"></div>
@@ -103,6 +80,7 @@ const Grid = styled.div`
 	opacity: 1;
 	/* box-shadow: inset 0px 0px 60px -35px black; */
 	z-index: 1;
+
 	.anim_container {
 		width: 100%;
 		height: 100%;
@@ -183,6 +161,7 @@ const Grid = styled.div`
 		animation: slideLeft 4.5s linear forwards, fadeOut 1s ease 4.5s forwards;
 		box-shadow: 0 0 0px 1px var(--third-color);
 	}
+
 	@keyframes slideOutDown {
 		0% {
 			height: 50%;
@@ -268,7 +247,7 @@ const Content = styled.div`
 		gap: 40px;
 		/* padding: 60px 0px; */
 		box-shadow: black 0px 20px 40px -20px;
-		.text_content {
+		.textContent {
 			display: flex;
 			flex-direction: column;
 			height: 45%;
@@ -284,29 +263,32 @@ const Content = styled.div`
 				/* font-size: calc(1.8em * calc(0.5 * 100vw)); */
 				font-size: 2em;
 			}
-			.intro_sec {
+			.introSec {
 				font-family: Orbitron;
 			}
-			.intro_main {
+			.introMain {
 				width: fit-content;
 				font-size: 6em;
 				/* font-weight: bold; */
 				font-family: Russo One;
 			}
 		}
-		.button_container {
+
+		.buttonContainer {
 			position: relative;
 			display: flex;
 			z-index: 8;
 			transition: 0.3s ease;
 			margin-top: 25px;
 		}
-		.button_container:hover {
+
+		.buttonContainer:hover {
 			transform: scale(1.05);
 			transition: 0.3s ease;
 			/* box-shadow: black 0px 20px 20px -25px; */
 		}
-		.button_container::after {
+
+		.buttonContainer::after {
 			content: "";
 			position: absolute;
 			overflow: visible;
@@ -318,7 +300,8 @@ const Content = styled.div`
 			z-index: -1;
 			transition: 0.5s ease;
 		}
-		.button_container::before {
+
+		.buttonContainer::before {
 			content: "";
 			position: absolute;
 			overflow: visible;
@@ -330,17 +313,20 @@ const Content = styled.div`
 			z-index: -1;
 			transition: 0.5s ease;
 		}
-		.button_container:hover::after {
+
+		.buttonContainer:hover::after {
 			animation: buttonHoverUp 3s linear infinite;
 			transform: scale(1.02);
 			transition: 0.5s ease;
 		}
-		.button_container:hover::before {
+
+		.buttonContainer:hover::before {
 			animation: buttonHoverBottom 3s linear infinite;
 			transform: scale(1.02);
 			transition: 0.5s ease;
 		}
-		.enter_button {
+
+		.enterButton {
 			opacity: 0;
 			position: relative;
 			text-decoration: none;
@@ -354,7 +340,7 @@ const Content = styled.div`
 			transition: 0.5s ease;
 			font-family: Orbitron;
 		}
-		.enter_button:hover {
+		.enterButton:hover {
 			color: var(--main-color);
 			transition: 0.5s ease;
 		}
@@ -393,6 +379,7 @@ const Content = styled.div`
 			transform: translateY(0);
 		}
 	}
+
 	@keyframes openDiv {
 		0% {
 			width: 0;
@@ -412,6 +399,7 @@ const Content = styled.div`
 			opacity: 1;
 		}
 	}
+
 	@keyframes rotatetoShow {
 		100% {
 			transform: rotate(225deg);
@@ -422,6 +410,7 @@ const Content = styled.div`
 			transform: rotate(180deg);
 		}
 	}
+
 	@keyframes buttonHoverUp {
 		0% {
 			top: -1px;
@@ -507,6 +496,7 @@ const Content = styled.div`
 			height: 35%;
 			box-shadow: 2px 0 4px 0.1px #ff4046;
 		}
+
 		100% {
 			top: -1px;
 			left: -0.5%;
@@ -600,6 +590,7 @@ const Content = styled.div`
 			height: 35%;
 			box-shadow: -2px 0 4px 0.1px #ff4046;
 		}
+
 		100% {
 			top: 100%;
 			left: 100%;

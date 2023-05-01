@@ -9,15 +9,24 @@ import {
 	SiNestjs,
 } from "react-icons/si";
 import { IoLogoVue } from "react-icons/io5";
+import ProjectDescription from "./ProjectDescription";
+import { useState } from "react";
 
 const MyProjects = forwardRef((props, ref) => {
+	const [modalState, setModalState] = useState(false);
 	const logoTaalToolBox = useRef(null);
+
+	const triggerModal = () => {
+		setModalState(!modalState);
+	};
 	// console.log(logoTaalToolBox.current);
 	return (
 		<Main ref={ref}>
+			<ProjectDescription toggleModal={modalState} />
+			{console.log("render project")}
 			<div className="content">
 				<div>
-					<h1>
+					<h1 className="title">
 						<span
 							style={{
 								color: getComputedStyle(
@@ -31,7 +40,7 @@ const MyProjects = forwardRef((props, ref) => {
 						My projects
 					</h1>
 				</div>
-				<p>
+				<p style={{ textAlign: "center" }}>
 					Here is a short list of my{" "}
 					<a
 						className="noticable"
@@ -52,13 +61,18 @@ const MyProjects = forwardRef((props, ref) => {
 						</p>
 						<div className="card_illustration">
 							<img
-								src="/src/assets/images/carRental.png"
+								src="/src/assets/images/carRental-min.png"
 								alt="carRental app preview image"
 								className="preview"
 							/>
-							<a href="" className="card_logo">
+							<a
+								// href="https://github.com/CardinPatson/Car_Location"
+								onClick={triggerModal}
+								target="_blank"
+								className="card_logo"
+							>
 								<img
-									src="/src/assets/logo/carRental.svg"
+									src="/src/assets/logo/projects/carRental.svg"
 									alt="carRental app logo"
 								/>
 							</a>
@@ -103,13 +117,18 @@ const MyProjects = forwardRef((props, ref) => {
 						</p>
 						<div className="card_illustration">
 							<img
-								src="/src/assets/images/taalToolBox.png"
+								src="/src/assets/images/taalToolBox-min.png"
 								alt="TaalToolBox app preview image"
 								className="preview"
 							/>
-							<a href="" className="card_logo">
+							<a
+								// href="https://github.com/Rachiid007/TaalToolBox"
+								onClick={triggerModal}
+								target="_blank"
+								className="card_logo"
+							>
 								<img
-									src="/src/assets/logo/taalToolBox.svg"
+									src="/src/assets/logo/projects/taalToolBox.svg"
 									alt="TaalToolBox app logo"
 								/>
 							</a>
@@ -149,13 +168,13 @@ const MyProjects = forwardRef((props, ref) => {
 						</p>
 						<div className="card_illustration">
 							<img
-								src="/src/assets/images/spaceDream.png"
-								alt="TaalToolBox app preview image"
+								src="/src/assets/images/spaceDream-min.png"
+								alt="Unknown app preview image"
 								className="preview"
 							/>
 							<img
-								src="/src/assets/logo/spaceDream.svg"
-								alt="TaalToolBox app logo"
+								src="/src/assets/logo/projects/spaceDream.svg"
+								alt="Unknown app logo"
 								className="card_logo"
 							/>
 						</div>
@@ -165,7 +184,7 @@ const MyProjects = forwardRef((props, ref) => {
 							div but this is not the case my friend. Nice try !
 						</p>
 						<div className="unavailable">
-							<p>This project is currently in developpement</p>
+							<p>This project is currently in development</p>
 						</div>
 					</div>
 				</div>
@@ -176,9 +195,7 @@ const MyProjects = forwardRef((props, ref) => {
 
 const Main = styled.div`
 	width: 100%;
-	/* height: 80vh; */
 	padding: 150px 0;
-	/* border: 1px solid var(--third-color); */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -198,10 +215,8 @@ const Main = styled.div`
 		align-items: center;
 		width: 80%;
 		max-width: 1200px;
-		/* outline: 1px solid purple; */
 		overflow: visible;
 		position: relative;
-		/* padding: 25px 0px; */
 		.noticable {
 			color: var(--third-color);
 			display: inline-block;
@@ -222,10 +237,8 @@ const Main = styled.div`
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
-			/* outline: 1px solid green; */
 			padding: 10px 0;
 			margin-top: 20px;
-			/* height: 100%; */
 			gap: 35px;
 			.instruction {
 				font-size: 25px;
@@ -239,16 +252,13 @@ const Main = styled.div`
 				display: none;
 			}
 			.card {
-				/* height: 100%; */
 				height: 420px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				/* justify-content: center; */
 				outline: 1px solid var(--second-color);
 				width: 28%;
 				max-width: 330px;
-				/* padding: 15px; */
 				text-align: center;
 				gap: 25px;
 				padding: 10px 0;
@@ -270,7 +280,6 @@ const Main = styled.div`
 				}
 				.card_illustration {
 					position: relative;
-					/* outline: 1px solid pink; */
 					width: 100%;
 					margin-bottom: 35px;
 					height: 35%;
@@ -289,6 +298,8 @@ const Main = styled.div`
 						position: absolute;
 						transition: 0.3s ease;
 						overflow: visible;
+						cursor: pointer;
+						will-change: transform;
 						img {
 							width: 100%;
 						}
@@ -296,27 +307,30 @@ const Main = styled.div`
 					.card_logo:hover {
 						transform: scale(1.1) translateY(-10px);
 						transition: 0.3s ease;
+						will-change: transform;
 						.card_illustration {
 							opacity: 1;
 						}
 					}
+					.card_logo::after {
+						position: absolute;
+						content: "More Details";
+						width: max-content;
+						top: 95%;
+						left: -17%;
+						border: 1px solid rgba(0, 0, 0, 0.4);
+						border-radius: 2px;
+						padding: 3px;
+						background: var(--main-color);
+						color: black;
+						opacity: 0;
+						transition: opacity 0.2s ease;
+					}
+					.card_logo:hover::after {
+						opacity: 1;
+						transition: opacity 0.5s ease 0.3s;
+					}
 				}
-				/* .card_illustration::after {
-					position: absolute;
-					top: 120%;
-					left: 30%;
-					width: 40%;
-					outline: 1px solid purple;
-					height: 20%;
-					content: "Github Link";
-					text-align: center;
-					font-size: 15px;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					z-index: -1;
-					opacity: 1;
-				} */
 				.card_description {
 					font-family: Prompt;
 					font-size: 13px;
@@ -328,10 +342,8 @@ const Main = styled.div`
 					width: 100%;
 					height: 15%;
 					position: absolute;
-					/* border-top: 1px solid red; */
 					bottom: -16%;
 					transition: 0.4s ease;
-					/* background: var(--main-color); */
 					display: flex;
 					flex-direction: row;
 					justify-content: center;
@@ -372,6 +384,7 @@ const Main = styled.div`
 					transform: translateY(-100%);
 					opacity: 1;
 					transition: 0.4s ease;
+					will-change: transform;
 				}
 				#carRental {
 					color: #0078b5;
@@ -397,10 +410,10 @@ const Main = styled.div`
 		}
 	}
 	.content::before {
-		/* opacity: 0; */
 		content: "";
 		width: 25%;
 		height: 15%;
+		max-height: 150px;
 		background: none;
 		position: absolute;
 		top: -20px;
@@ -410,10 +423,10 @@ const Main = styled.div`
 		transition: 0.5s ease;
 	}
 	.content::after {
-		/* opacity: 0; */
 		content: "";
 		width: 25%;
 		height: 15%;
+		max-height: 150px;
 		background: none;
 		position: absolute;
 		bottom: -20px;
@@ -421,23 +434,49 @@ const Main = styled.div`
 		border-bottom: 2px solid var(--third-color);
 		border-left: 2px solid var(--third-color);
 		transition: 0.5s ease;
+		will-change: transform;
 	}
 	.content:hover::after {
 		transform: translateY(30px) translateX(-30px);
 		transition: 0.5s ease;
+		will-change: transform;
 	}
 	.content:hover::before {
 		transform: translateY(-30px) translateX(30px);
 		transition: 0.5s ease;
+		will-change: transform;
+	}
+	@media (max-width: 420px) {
+		.title {
+			font-size: 40px;
+		}
 	}
 	@media (max-height: 900px) {
 		.content {
-			max-height: 550px;
 			.cards_list {
 				.card {
 					max-height: 350px;
 					max-width: 280px;
 					gap: 5px;
+					.card_title {
+						font-size: 20px;
+						padding-top: 5px;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 1000px) {
+		padding: 0;
+		.content {
+			.cards_list {
+				flex-direction: column;
+				width: 100%;
+				.card {
+					max-height: 350px;
+					max-width: 280px;
+					gap: 5px;
+					width: 100%;
 					.card_title {
 						font-size: 20px;
 						padding-top: 5px;

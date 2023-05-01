@@ -20,16 +20,6 @@ const AboutMe = forwardRef((props, ref) => {
 				</div>
 				<div className="about_content">
 					<div className="header">
-						{/* <span
-							style={{
-								color: getComputedStyle(
-									document.documentElement
-								).getPropertyValue("--third-color"),
-								fontSize: "25px",
-							}}
-						>
-							3.
-						</span> */}
 						<h1>About Me</h1>
 					</div>
 					<p>
@@ -39,7 +29,7 @@ const AboutMe = forwardRef((props, ref) => {
 						</b>{" "}
 						also known as MaZeppAa, and i am a web developper ! I
 						love learning new things about coding and all other
-						stuff. I am mainly focused on frontend developpement.
+						stuff. I am mainly focused on frontend development.
 					</p>
 					<h3>What I like to do:</h3>
 					<div className="like">
@@ -114,7 +104,7 @@ const Main = styled.div`
 		.profile_pic {
 			position: relative;
 			/* height: fit-content; */
-			height: auto;
+			height: 100%;
 			width: fit-content;
 			display: flex;
 			transition: 0.5s ease;
@@ -122,7 +112,10 @@ const Main = styled.div`
 			/* border: 1px solid var(--second-color); */
 			img {
 				height: auto;
-				width: 250px;
+				width: auto;
+				max-width: 250px;
+				max-height: 350px;
+				aspect-ratio: 1/1;
 				opacity: 0;
 				box-shadow: 0 5px 10px -5px var(--second-color);
 				animation: fadeIn 0.5s ease 2.5s forwards;
@@ -245,6 +238,60 @@ const Main = styled.div`
 		transform: scale(1.02);
 		transition: 0.8s ease;
 	}
+	@media (max-width: 1160px) {
+		.content {
+			padding: 35px;
+			max-width: 70%;
+			.profile_pic {
+				display: none;
+			}
+		}
+		.content:hover::after {
+			transform: translateY(-10px) translateX(-10px);
+			transition: 0.5s ease;
+		}
+		.content:hover::before {
+			transform: translateY(10px) translateX(10px);
+			transition: 0.5s ease;
+		}
+		.content:hover {
+			transform: scale(1.02);
+			transition: 0.8s ease;
+		}
+	}
+	@media (max-width: 500px) {
+		.content {
+			padding: 15px;
+			h1,
+			h1::after {
+				font-size: 35px;
+			}
+			h1::before {
+				font-size: 25px;
+				top: 25%;
+				left: -10%;
+			}
+		}
+		.content:hover::after {
+			transform: translateY(-5px) translateX(-5px);
+			transition: 0.5s ease;
+		}
+		.content:hover::before {
+			transform: translateY(5px) translateX(5px);
+			transition: 0.5s ease;
+		}
+		.content:hover {
+			transform: scale(1.02);
+			transition: 0.8s ease;
+		}
+	}
+
+	@media (max-height: 700px) {
+		.content {
+			padding: 5px;
+		}
+	}
+
 	@keyframes typing {
 		100% {
 			width: 0;

@@ -1,23 +1,25 @@
-Bar gauche avec lien github, etc => anim 
-
-Texte qui passe en dessous du header => corriger => blur ? backdrop-filter 
-
-revoir le button enter 
-
-revoir le main header 
+/!\ REUSE LE BOUTON ENTRER /!\ => Peut être le refaire avec l'autre méthode de l'éclair
 
 Animer page entrer dans le site 
 
 - Header rétractable 
 
 - Finir Knowledges
- 
-effet hud sur knowledge (logo 3D + knowledges) avec barres => Skill et love  
-
-Meme principe que pour about me mais sur my projects (barres lat qui s'écartent)
-
 
 Chôses à faire attention:
 
 - Translate sur les techno pour les projets 
 
+Mixin => Scss
+
+Nettoyer code composant Home 
+
+Réduire la taille des images et utiliser des will-change pour les perfs
+
+Carte à deux sens pour les projets qui donne plus de détails
+
+Mettre Django à la place de python 
+
+Peut être mettre un truc quand rien n'est sélectionner dans les technologies (pour l'instant c'est React qui est sélectionner par défaut)
+
+Mettre des keyframes en global pour épurer le code css 

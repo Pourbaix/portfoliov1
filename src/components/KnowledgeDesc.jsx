@@ -12,8 +12,17 @@ const KnowledgeDesc = (props) => {
 						<div className="desc">
 							<div className="logo_container">
 								<img
-									src={"/src/assets/logo/" + props.image}
+									src={
+										"/src/assets/logo/knowledges/" +
+										props.image
+									}
 									className="logo"
+									style={{
+										filter:
+											"drop-shadow( 0 8px 4px " +
+											props.colorTheme +
+											")",
+									}}
 								/>
 							</div>
 							<h2>{props.name}</h2>

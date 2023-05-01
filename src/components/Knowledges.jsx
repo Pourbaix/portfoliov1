@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useRef, useState, memo, useEffect } from "react";
 import KnowledgeDesc from "./KnowledgeDesc";
 
 const Knowledges = forwardRef((props, ref) => {
@@ -12,6 +12,7 @@ const Knowledges = forwardRef((props, ref) => {
 
 	const [name, setName] = useState("");
 	const [image, setImage] = useState("");
+	const [colorTheme, setColorTheme] = useState("");
 	const [skill, setSkill] = useState("");
 	const [love, setLove] = useState("");
 	const [description, setDescription] = useState("");
@@ -20,6 +21,7 @@ const Knowledges = forwardRef((props, ref) => {
 		{
 			name: "React",
 			logo: "React.svg",
+			color_theme: "rgb(97, 219, 251, 0.5)",
 			widthSkill: "60%",
 			widthLove: "80%",
 			description:
@@ -28,6 +30,7 @@ const Knowledges = forwardRef((props, ref) => {
 		{
 			name: "VueJS",
 			logo: "Vue.svg",
+			color_theme: "rgb(65, 184, 130, 0.5)",
 			widthSkill: "40%",
 			widthLove: "60%",
 			description:
@@ -36,33 +39,56 @@ const Knowledges = forwardRef((props, ref) => {
 		{
 			name: "TypeScript",
 			logo: "Typescript.svg",
+			color_theme: "rgb(0, 122, 204, 0.5)",
 			widthSkill: "40%",
-			widthLove: "20%",
+			widthLove: "40%",
 			description:
-				"I began learning Typescript at the same time than Vue. I understand the positive points of this language compare to JavaScript, but when you code in TypeScript, it is so anoying !",
+				"I began learning Typescript at the same time than Vue. I understand the positive points of this language compare to JavaScript, but when you code in TypeScript, it is much more time consuming!",
 		},
 		{
 			name: "JavaScript",
 			logo: "Javascript.svg",
-			widthSkill: "40%",
+			color_theme: "rgb(50, 51, 48, 0.5)",
+			widthSkill: "60%",
 			widthLove: "80%",
-			description: "Text desc",
+			description:
+				"Javascript is a 'must have' when you want to build web apps but it is hard to master completely. I would say it is one of my favorite language even if some things are wierd in it. Also, it was my first coding language.",
 		},
 		{
 			name: "CSS",
 			logo: "css.svg",
+			color_theme: "rgb(41, 101, 241, 0.5)",
 			widthSkill: "60%",
 			widthLove: "100%",
-			description: "Text desc",
+			description:
+				"I don't remember how and why I started to like CSS, but I freaking love it! The flow of properties that you can use and the number of ways in which you can use them is just incredible. Once you understood CSS, you can only love it!",
 		},
 		{
-			name: "Python",
-			logo: "Python.svg",
-			widthSkill: "20%",
+			name: "Django",
+			logo: "Django.svg",
+			color_theme: "rgb(24, 128, 88, 0.5)",
+			widthSkill: "60%",
 			widthLove: "40%",
-			description: "Text desc",
+			description:
+				"I learned and used django during my internship for my studies. The logic is a bit hard to catch at the beginning, but the framework comes with a lot of crucial elements built directly in and it makes a lot of things easier.",
 		},
 	];
+
+	const formatedHtmlSelector = contentList.map((object, i) => (
+		<div
+			className="selector_item"
+			id={i + 1}
+			key={i}
+			onClick={(e) => {
+				updateElementClicked(e.target);
+			}}
+		>
+			<img
+				className="selector_logo"
+				src={"/src/assets/logo/knowledges/" + object.logo}
+			/>
+		</div>
+	));
 
 	// ----------------------------
 	// getDivFromElement(:element:)
@@ -75,11 +101,9 @@ const Knowledges = forwardRef((props, ref) => {
 		// - Si c'est un svg, on prend la div parent
 		let selectedElement;
 
-		// console.log(element);
 		if (element.tagName == "DIV") {
 			selectedElement = element;
 		} else {
-			// console.log(element.parentElement);
 			selectedElement = element.parentElement;
 			let tempElement = selectedElement;
 			if (tempElement.tagName !== "DIV") {
@@ -99,6 +123,7 @@ const Knowledges = forwardRef((props, ref) => {
 		let selectedElement = getDivFromElement(element);
 		setName(contentList[selectedElement.id - 1]["name"]);
 		setImage(contentList[selectedElement.id - 1]["logo"]);
+		setColorTheme(contentList[selectedElement.id - 1]["color_theme"]);
 		setSkill(contentList[selectedElement.id - 1]["widthSkill"]);
 		setLove(contentList[selectedElement.id - 1]["widthLove"]);
 		setDescription(contentList[selectedElement.id - 1]["description"]);
@@ -107,30 +132,22 @@ const Knowledges = forwardRef((props, ref) => {
 	// ----------------------------
 	// swapSelector(:element:)
 	// ----------------------------
-	// FR: Permet de changer le style de la tecnologie actuellement choisie
+	// FR: Permet de changer le style de la technologie actuellement choisie
 	// EN: Changes the style of the selected technology
 
 	const swapSelector = (element) => {
 		let selectedElement = getDivFromElement(element);
 
-		// console.log(element);
-
-		// console.log(parseInt(selectedElement.id));
 		let divHeight = parseInt(getComputedStyle(selectedElement).height);
-		// console.log("Taille de la div: " + divHeight + "px");
 		let divPos = divHeight * (parseInt(selectedElement.id) - 1);
-		// console.log("Nombre de pixel avant la div: " + divPos);
-		// console.log(getComputedStyle(rightSelector.current).borderTop);
-		// console.log(
-		// 	"Position des curseurs: " + (divPos + divHeight / 2 - 10) + "px"
-		// );
+
 		let newSlectorPos = divPos + divHeight / 2 - 9;
 		let totalHeight = parseInt(
 			getComputedStyle(selectorContainer.current).height
 		);
-		// console.log(totalHeight, newSlectorPos);
+
 		let heightInPorcentage = (newSlectorPos / totalHeight) * 100;
-		// console.log("Position to top %: " + heightInPorcentage);
+
 		rightSelector.current.style.top = heightInPorcentage + "%";
 		leftSelector.current.style.top = heightInPorcentage + "%";
 		rightSelector.current.style.opacity = "1";
@@ -140,12 +157,10 @@ const Knowledges = forwardRef((props, ref) => {
 	// ----------------------------
 	// swapStyle(:element:)
 	// ----------------------------
-	// FR: Permet de changer le style de la tecnologie actuellement choisie
+	// FR: Permet de changer le style de la technologie actuellement choisie
 	// EN: Changes the style of the selected technology
 
 	const swapStyle = (element) => {
-		// console.log(element);
-
 		let selectedElement = getDivFromElement(element);
 
 		if (lastDiv.current) {
@@ -165,8 +180,14 @@ const Knowledges = forwardRef((props, ref) => {
 		swapStyle(element);
 		changeDisplay(element);
 	};
+
+	useEffect(() => {
+		// Select React as the first knowledge element visible
+		updateElementClicked(document.getElementById(1));
+	}, []);
 	return (
 		<Main ref={ref}>
+			{console.log("render")}
 			<div className="content">
 				<div className="header_container">
 					<h1 className="header">
@@ -185,78 +206,7 @@ const Knowledges = forwardRef((props, ref) => {
 				</div>
 				<div className="main_content">
 					<div className="selector" ref={selectorContainer}>
-						<div
-							className="selector_item"
-							id="1"
-							onClick={(e) => {
-								updateElementClicked(e.target);
-							}}
-						>
-							<img
-								className="selector_logo"
-								src="/src/assets/logo/React.svg"
-							/>
-						</div>
-						<div
-							className="selector_item"
-							id="2"
-							onClick={(e) => {
-								updateElementClicked(e.target);
-							}}
-						>
-							<img
-								className="selector_logo"
-								src="/src/assets/logo/Vue.svg"
-							/>
-						</div>
-						<div
-							className="selector_item"
-							id="3"
-							onClick={(e) => {
-								updateElementClicked(e.target);
-							}}
-						>
-							<img
-								className="selector_logo"
-								src="/src/assets/logo/Typescript.svg"
-							/>
-						</div>
-						<div
-							className="selector_item"
-							id="4"
-							onClick={(e) => {
-								updateElementClicked(e.target);
-							}}
-						>
-							<img
-								className="selector_logo"
-								src="/src/assets/logo/Javascript.svg"
-							/>
-						</div>
-						<div
-							className="selector_item"
-							id="5"
-							onClick={(e) => {
-								updateElementClicked(e.target);
-							}}
-						>
-							<img
-								className="selector_logo"
-								src="/src/assets/logo/css.svg"
-							/>
-						</div>
-						<div
-							className="selector_item"
-							id="6"
-							onClick={(e) => {
-								updateElementClicked(e.target);
-							}}
-						>
-							<img
-								className="selector_logo"
-								src="/src/assets/logo/Python.svg"
-							/>
-						</div>
+						{formatedHtmlSelector}
 						<div
 							className="selector_icon_right"
 							ref={rightSelector}
@@ -274,6 +224,7 @@ const Knowledges = forwardRef((props, ref) => {
 						<KnowledgeDesc
 							name={name}
 							image={image}
+							colorTheme={colorTheme}
 							skill={skill}
 							love={love}
 							description={description}
@@ -293,7 +244,6 @@ const Main = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	/* border: 1px solid red; */
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -302,12 +252,10 @@ const Main = styled.div`
 		gap: 15px;
 		width: 95%;
 		max-width: 1200px;
-		/* border: 1px solid var(--fourth-color); */
 		overflow: visible;
 		position: relative;
 		padding: 25px 25px;
-		/* box-shadow: black 0 0 40px -35px; */
-		/* background-color: var(--fourth-color); */
+
 		.header_container {
 			width: 100%;
 			/* display: flex; */
@@ -323,16 +271,14 @@ const Main = styled.div`
 				text-align: left;
 				justify-self: left;
 				font-size: 40px;
-				/* border-top: 2px dashed var(--second-color); */
 				border-bottom: 2px dashed var(--second-color);
 			}
+			@media (max-width: 400px) {
+				.header {
+					font-size: 35px;
+				}
+			}
 		}
-		/* .header::before {
-			position: absolute;
-			content: "▹";
-			left: 0;
-			width: 30px;
-		} */
 		.main_content {
 			display: flex;
 			flex-direction: row;
@@ -472,26 +418,6 @@ const Main = styled.div`
 			}
 		}
 	}
-	/* .content::after {
-		width: 60px;
-		height: 60px;
-		content: "";
-		position: absolute;
-		border-top: 3px solid var(--second-color);
-		border-left: 3px solid var(--second-color);
-		top: -2px;
-		left: -2px;
-	}
-	.content::before {
-		width: 60px;
-		height: 60px;
-		content: "";
-		position: absolute;
-		border-bottom: 3px solid var(--second-color);
-		border-right: 3px solid var(--second-color);
-		bottom: -2px;
-		right: -2px;
-	} */
 `;
 
 export default Knowledges;

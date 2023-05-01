@@ -1,17 +1,26 @@
 import styled from "styled-components";
-import Header from "./Header";
-import SocialBar from "./SocialBar";
-import CornerLogo from "./CornerLogo";
-import AboutMe from "./AboutMe";
-import MyProjects from "./MyProjects";
-import Knowledges from "./Knowledges";
-import { useEffect, useRef } from "react";
-import { useState } from "react";
+import Header from "../components/Header";
+import SocialBar from "../components/SocialBar";
+import CornerLogo from "../components/CornerLogo";
+import AboutMe from "../components/AboutMe";
+// import MyProjects from "./MyProjects";
+import Knowledges from "../components/Knowledges";
+import Activities from "../components/Activities";
+import Loading from "../components/Loading";
+import { useEffect, useState, useRef, Suspense, lazy } from "react";
+
+const MyProjects = lazy(() => {
+	return new Promise((resolve) => {
+		resolve(import("../components/MyProjects"));
+	});
+});
 
 function Portfolio() {
 	const aboutMe = useRef(null);
 	const myProjects = useRef(null);
 	const knowledges = useRef(null);
+	const activities = useRef(null);
+
 	const container = useRef(null);
 
 	const [myProjectsVisibility, setMyProjectsVisibility] = useState("none");
@@ -29,6 +38,8 @@ function Portfolio() {
 			scrollToComponent(myProjects.current);
 		} else if (divRef == 2) {
 			scrollToComponent(knowledges.current);
+		} else if (divRef == 3) {
+			scrollToComponent(activities.current);
 		} else {
 			scrollToComponent(aboutMe.current);
 		}
@@ -62,22 +73,36 @@ function Portfolio() {
 	return (
 		<Main>
 			<Header onSwapToContent={scrollFunction} />
-			<SocialBar />
+			{/* <SocialBar /> */}
 			<Content ref={container}>
 				<AboutMe ref={aboutMe} />
-				<MyProjects
-					ref={myProjects}
-					visibility={myProjectsVisibility}
-				/>
+				<Suspense
+					fallback={
+						<div className="loading_content">
+							<p>Test Loading</p>
+						</div>
+					}
+				>
+					<MyProjects
+						ref={myProjects}
+						visibility={myProjectsVisibility}
+					/>
+				</Suspense>
 				<Knowledges ref={knowledges} />
+				<Activities ref={activities} />
+				<Loading />
 			</Content>
 			<CornerLogo />
+			<div className="devmode">
+				<p>In development</p>
+			</div>
 		</Main>
 	);
 }
 
 const Main = styled.div`
 	width: 100%;
+	min-width: 300px;
 	/* min-height: 100vh; */
 	display: flex;
 	flex-direction: column;
@@ -86,6 +111,25 @@ const Main = styled.div`
 	position: relative;
 	overflow-y: visible;
 	overflow-x: hidden;
+	.devmode {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 5;
+		background: linear-gradient(
+			90deg,
+			rgba(245, 167, 66, 1) 10%,
+			rgba(245, 136, 66, 1) 45%,
+			rgba(246, 177, 87, 1) 100%
+		);
+		margin: 0;
+		padding: 5px 45px;
+		transform: scale(0.8) rotate(45deg) translateX(-70px) translateY(25px);
+		p {
+			margin: 0;
+			font-weight: bold;
+		}
+	}
 `;
 
 const Content = styled.div`

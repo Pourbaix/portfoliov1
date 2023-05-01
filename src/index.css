@@ -6,7 +6,7 @@
 	color-scheme: light dark;
 	color: var(--second-color);
 	background-color: var(--main-color);
-	/* box-shadow: inset 0px 0px 60px -10px var(--second-color); */
+	box-shadow: inset 0px 0px 60px -10px var(--second-color);
 
 	--main-color: #f0f0f0;
 	--second-color: #232323;
@@ -20,6 +20,13 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
+
+	min-width: 350px;
+}
+
+::selection {
+	color: white;
+	background: #de0000;
 }
 
 a {
@@ -92,7 +99,7 @@ h1 {
 
 /* ------------------------------------------- */
 
-@font-face {
+/* @font-face {
 	font-family: Paytone One;
 	src: url("./assets/fonts/PaytoneOne-Regular.ttf");
 }
@@ -125,4 +132,13 @@ h1 {
 @font-face {
 	font-family: Russo One;
 	src: url("./assets/fonts/RussoOne-Regular.ttf");
+} */
+
+@keyframes appearingmain {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

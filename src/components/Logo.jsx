@@ -11,7 +11,7 @@ function Logo() {
 				<div className="line shape6"></div>
 				<img src="/logo/Logo.svg" alt="My portfolio logo" />
 			</div>
-			<div className="loadingMessage">Chargement du portfolio . . .</div>
+			<div className="loading_message">Chargement du portfolio . . .</div>
 		</Main>
 	);
 }
@@ -20,7 +20,6 @@ const Main = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
-	/* justify-content: center; */
 	align-items: center;
 	flex-direction: column;
 	gap: 0vh;
@@ -88,7 +87,7 @@ const Main = styled.div`
 			animation: generateEffect 0.2s linear 1.5s forwards;
 		}
 	}
-	.loadingMessage {
+	.loading_message {
 		opacity: 0;
 		font-size: 1.3em;
 		text-align: center;
@@ -97,7 +96,7 @@ const Main = styled.div`
 		margin-bottom: 160px;
 		animation: fadeOut 0.2s ease 4s forwards;
 	}
-	.loadingMessage::after {
+	.loading_message::after {
 		content: "";
 		position: absolute;
 		width: 12%;

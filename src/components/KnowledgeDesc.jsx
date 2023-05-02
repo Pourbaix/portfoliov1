@@ -23,7 +23,9 @@ const KnowledgeDesc = (props) => {
 							<div
 								className="logo_container"
 								ref={logoContainer}
-								style={{ backgroundImage: BackImage }}
+								style={{
+									backgroundImage: "url(" + BackImage + ")",
+								}}
 							>
 								<img
 									src={props.image}

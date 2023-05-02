@@ -191,7 +191,6 @@ const Knowledges = forwardRef((props, ref) => {
 	}, []);
 	return (
 		<Main ref={ref}>
-			{console.log("render")}
 			<div className="content">
 				<div className="header_container">
 					<h1 className="header">
@@ -243,7 +242,7 @@ const Knowledges = forwardRef((props, ref) => {
 const Main = styled.div`
 	width: 100%;
 	margin-top: 100px;
-	max-height: 1200px;
+	/* max-height: 1200px; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;

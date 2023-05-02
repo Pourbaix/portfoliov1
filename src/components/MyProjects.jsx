@@ -75,8 +75,8 @@ const MyProjects = forwardRef((props, ref) => {
 								className="preview"
 							/>
 							<a
-								// href="https://github.com/CardinPatson/Car_Location"
-								onClick={triggerModal}
+								href="https://github.com/CardinPatson/Car_Location"
+								// onClick={triggerModal}
 								target="_blank"
 								className="card_logo"
 							>
@@ -131,8 +131,8 @@ const MyProjects = forwardRef((props, ref) => {
 								className="preview"
 							/>
 							<a
-								// href="https://github.com/Rachiid007/TaalToolBox"
-								onClick={triggerModal}
+								href="https://github.com/Rachiid007/TaalToolBox"
+								// onClick={triggerModal}
 								target="_blank"
 								className="card_logo"
 							>
@@ -321,7 +321,7 @@ const Main = styled.div`
 							opacity: 1;
 						}
 					}
-					.card_logo::after {
+					/* .card_logo::after {
 						position: absolute;
 						content: "More Details";
 						width: max-content;
@@ -338,7 +338,7 @@ const Main = styled.div`
 					.card_logo:hover::after {
 						opacity: 1;
 						transition: opacity 0.5s ease 0.3s;
-					}
+					} */
 				}
 				.card_description {
 					font-family: Prompt;

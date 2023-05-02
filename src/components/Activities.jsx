@@ -89,7 +89,7 @@ const Activities = forwardRef((props, ref) => {
 
 	return (
 		<Main ref={ref}>
-			<h1>Activities</h1>
+			<h1 style={{ fontFamily: "Russo One" }}>Activities</h1>
 			<div className="indicator_container">
 				<div className="indicator_line"></div>
 				<div
@@ -185,7 +185,9 @@ const Activities = forwardRef((props, ref) => {
 					{data.map((element, key) => {
 						return (
 							<div className="page" key={key}>
-								<h3>{element.title}</h3>
+								<h3 style={{ fontFamily: "Paytone One" }}>
+									{element.title}
+								</h3>
 								<div className="page_content">
 									<div className="content_image">
 										{element.image ? (
@@ -194,7 +196,9 @@ const Activities = forwardRef((props, ref) => {
 												alt={element.image_descr}
 											/>
 										) : (
-											<p>No image provided</p>
+											<p style={{ fontFamily: "Lexend" }}>
+												No image provided
+											</p>
 										)}
 										<div className="decoration_container">
 											<div className="decoration_top"></div>
@@ -261,7 +265,8 @@ const Main = styled.div`
 	width: 100%;
 	min-height: 100vh;
 	/* min-height: 1000px; */
-	border: 1px solid var(--third-color);
+	border: 0;
+	border-top: 1px solid var(--fourth-color);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -572,7 +577,7 @@ const Main = styled.div`
 		transition: 0.3s ease;
 		/* box-shadow: black 0px 20px 20px -25px; */
 	}
-	.button_container::after {
+	/* .button_container::after {
 		content: "";
 		position: absolute;
 		overflow: visible;
@@ -605,24 +610,26 @@ const Main = styled.div`
 		animation: buttonHoverBottom 3s linear infinite;
 		transform: scale(1.02);
 		transition: 0.5s ease;
-	}
+	} */
 	.enter_button {
 		opacity: 0;
 		position: relative;
 		text-decoration: none;
-		background-color: rgb(0, 0, 0, 0.8);
+		background-color: var(--fourth-color);
 		border: 1px solid var(--second-color);
 		padding: 15px 35px;
-		font-size: 35px;
+		font-size: 30px;
 		justify-self: center;
 		animation: fadeIn 1s ease 1s forwards;
 		cursor: pointer;
 		transition: 0.5s ease;
 		font-family: Orbitron;
+		color: var(--main-color);
 	}
 	.enter_button:hover {
 		color: var(--main-color);
 		transition: 0.5s ease;
+		filter: drop-shadow(0px 0px 5px red);
 	}
 	@media (max-width: 810px) {
 		.content_container {
@@ -639,7 +646,7 @@ const Main = styled.div`
 			height: 800px;
 		}
 	}
-	@keyframes buttonHoverUp {
+	/* @keyframes buttonHoverUp {
 		0% {
 			top: -1px;
 			left: 0;
@@ -824,7 +831,7 @@ const Main = styled.div`
 			height: 0;
 			box-shadow: -2px 0 4px 0.1px #ff4046;
 		}
-	}
+	} */
 `;
 
 export default Activities;

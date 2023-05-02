@@ -2,17 +2,29 @@ import styled from "styled-components";
 
 import BackImage from "/src/assets/logo/knowledges/backimage.svg";
 
+import { useRef, useEffect } from "react";
+
 const KnowledgeDesc = (props) => {
+	const logoContainer = useRef(null);
+
+	useEffect(() => {
+		if (logoContainer.current) {
+			logoContainer.current.style.backgroundImage =
+				"url(" + BackImage + ")";
+		}
+	}, [logoContainer]);
+
 	return (
 		<Main>
 			<Content>
-				{/* <div className="title">
-					<h1>{props.name}</h1>
-				</div> */}
 				{props.name ? (
 					<>
 						<div className="desc">
-							<div className="logo_container">
+							<div
+								className="logo_container"
+								ref={logoContainer}
+								style={{ backgroundImage: BackImage }}
+							>
 								<img
 									src={props.image}
 									className="logo"
@@ -109,17 +121,6 @@ const Content = styled.div`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	/* background: var(--fourth-color); */
-	/* .title {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		font-family: Asap;
-		width: 100%;
-		margin-top: 15px;
-	} */
 	.desc {
 		margin-top: 10px;
 		width: 85%;
@@ -129,7 +130,6 @@ const Content = styled.div`
 		gap: 0;
 		justify-content: center;
 		align-items: center;
-		/* border: 1px solid var(--second-color); */
 		background: var(--main-color);
 		position: relative;
 		p {
@@ -154,7 +154,6 @@ const Content = styled.div`
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-image: url(BackImage);
 			background-size: 15px;
 			box-shadow: inset 0 0 5px 10px var(--main-color);
 			.logo {
@@ -162,7 +161,6 @@ const Content = styled.div`
 				height: 65px;
 				margin: 35px 0;
 				animation: levitate 3s linear infinite;
-				/* box-shadow: 0 0 30px 20px var(--main-color); */
 			}
 		}
 		.description {
@@ -185,11 +183,6 @@ const Content = styled.div`
 			.progress_bar {
 				width: 0;
 				height: 100%;
-				/* background: linear-gradient(
-					90deg,
-					rgb(180, 0, 0),
-					var(--third-color)
-				); */
 				background: var(--third-color);
 				position: absolute;
 				left: 0;

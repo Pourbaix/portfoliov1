@@ -73,7 +73,6 @@ function Portfolio() {
 	return (
 		<Main>
 			<Header onSwapToContent={scrollFunction} />
-			{/* <SocialBar /> */}
 			<Content ref={container}>
 				<AboutMe ref={aboutMe} />
 				<Suspense
@@ -90,7 +89,8 @@ function Portfolio() {
 				</Suspense>
 				<Knowledges ref={knowledges} />
 				<Activities ref={activities} />
-				<Loading />
+				<SocialBar />
+				{/* <Loading /> */}
 			</Content>
 			<CornerLogo />
 			<div className="devmode">
@@ -124,10 +124,11 @@ const Main = styled.div`
 		);
 		margin: 0;
 		padding: 5px 45px;
-		transform: scale(0.8) rotate(45deg) translateX(-70px) translateY(25px);
+		transform: scale(0.8) rotate(45deg) translateX(-80px) translateY(25px);
 		p {
 			margin: 0;
 			font-weight: bold;
+			font-family: "Russo One";
 		}
 	}
 `;

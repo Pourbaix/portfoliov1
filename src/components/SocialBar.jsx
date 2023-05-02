@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { DiGithubBadge } from "react-icons/di";
-import { RiDiscordFill, RiSteamFill } from "react-icons/ri";
+import { RiDiscordFill, RiSteamFill, RiLinkedinBoxFill } from "react-icons/ri";
 
 function SocialBar() {
 	return (
@@ -13,13 +13,13 @@ function SocialBar() {
 					target="_blank"
 					id="github"
 				>
-					<DiGithubBadge size="4vh" className="icon" />
+					<DiGithubBadge className="icon" />
 				</a>
 				<a className="element" id="discord">
-					<RiDiscordFill size="3.5vh" className="icon" />
+					<RiDiscordFill className="icon" />
 				</a>
 				<a className="element" id="steam">
-					<RiSteamFill size="3.5vh" className="icon" />
+					<RiLinkedinBoxFill className="icon" />
 				</a>
 				<div className="line"></div>
 			</Content>
@@ -28,13 +28,8 @@ function SocialBar() {
 }
 
 const Main = styled.div`
-	position: fixed;
-	top: 37.5%;
-	/* top: 65%; */
-	left: 0;
 	height: 35%;
 	width: 5%;
-	/* border: 1px solid blue; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -45,10 +40,10 @@ const Main = styled.div`
 
 const Content = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 15px;
+	gap: 5vw;
 	font-family: Prompt;
 	.element {
 		display: flex;
@@ -59,47 +54,43 @@ const Content = styled.div`
 	}
 	.element::after {
 		content: "";
-		top: 0;
+		top: -100%;
 		height: 100%;
-		left: 120%;
+		left: 0%;
 		position: absolute;
 		color: var(--third-color);
 		transition: 1 ease;
 		display: flex;
 		align-items: center;
 	}
-	.element:hover {
-		color: blue;
-	}
-	#github:hover::after {
-		animation: githubWrite 0.3s ease forwards;
+	/* #github:hover::after {
+		animation: githubWrite 0.8s ease forwards;
 		transition: 0.5s ease;
 	}
 	#discord:hover::after {
-		animation: discordWrite 0.3s ease forwards;
+		animation: discordWrite 0.8s ease forwards;
 		transition: 0.5s ease;
 	}
 	#steam:hover::after {
-		animation: steamWrite 0.3s ease forwards;
+		animation: steamWrite 0.8s ease forwards;
 		transition: 0.5s ease;
-	}
+	} */
 	.line {
-		height: 0;
-		width: 1px;
-		border-left: 1px solid var(--second-color);
+		height: 1px;
+		width: 0;
+		border-top: 1px solid var(--second-color);
 		animation: slideOut 1s ease 1s forwards;
 	}
 	.icon {
 		transition: 0.25s ease;
 		color: var(--second-color);
-		min-width: ;
+		font-size: 4vw;
 	}
 	.icon:hover {
-		transform: scale(1.2);
+		transform: scale(1.2) translateY(-15%);
 		cursor: pointer;
-		color: var(--third-color);
-		transition: 0.25s ease;
-		opacity: 0.9;
+		transition: 0.35s ease;
+		filter: drop-shadow(1px 1px 1px var(--third-color));
 	}
 	@keyframes appearIcon {
 		0% {
@@ -113,10 +104,10 @@ const Content = styled.div`
 	}
 	@keyframes slideOut {
 		0% {
-			height: 0;
+			width: 0;
 		}
 		100% {
-			height: 6vh;
+			width: 8vh;
 		}
 	}
 	@keyframes githubWrite {
@@ -210,6 +201,11 @@ const Content = styled.div`
 		}
 		100% {
 			content: "#MaZeppA";
+		}
+	}
+	@media (max-width: 750px) {
+		.icon {
+			font-size: 8vw;
 		}
 	}
 `;

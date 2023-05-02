@@ -26,7 +26,7 @@ const AboutMe = forwardRef((props, ref) => {
 					</div>
 					<p>
 						My name is{" "}
-						<b style={{ color: "red", fontFamily: "RussoOne" }}>
+						<b style={{ color: "red", fontFamily: "Russo one" }}>
 							Michaël
 						</b>{" "}
 						also known as MaZeppAa, and i am a web developper ! I
@@ -134,6 +134,8 @@ const Main = styled.div`
 				z-index: -2;
 				opacity: 0;
 				transition: 0.5s ease;
+				font-family: "Lexend";
+				font-size: 15px;
 				.author {
 					color: var(--third-color);
 				}

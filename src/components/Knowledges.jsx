@@ -242,7 +242,7 @@ const Knowledges = forwardRef((props, ref) => {
 const Main = styled.div`
 	width: 100%;
 	margin-top: 100px;
-	/* max-height: 1200px; */
+	min-height: max-content;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -417,7 +417,7 @@ const Main = styled.div`
 			.content_display {
 				width: 75%;
 				/* border: 1px solid blue; */
-				height: 500px;
+				min-height: fit-content;
 			}
 		}
 	}

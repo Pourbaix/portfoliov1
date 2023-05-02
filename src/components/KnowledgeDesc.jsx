@@ -110,7 +110,6 @@ const KnowledgeDesc = (props) => {
 const Main = styled.div`
 	color: var(--second-color);
 	width: 100%;
-	height: 100%;
 	h1 {
 		margin: 0;
 		transition: 1s ease;
@@ -152,7 +151,7 @@ const Content = styled.div`
 			font-family: Russo One;
 		}
 		.logo_container {
-			width: 35%;
+			width: 200px;
 			display: flex;
 			justify-content: center;
 			align-items: center;

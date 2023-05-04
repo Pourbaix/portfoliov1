@@ -19,21 +19,18 @@ import CarRentalLogo from "/src/assets/logo/projects/carRental.svg";
 import CarRentalImage from "/src/assets/images/carRental-min.png";
 
 import SpaceDreamLogo from "/src/assets/logo/projects/spaceDream.svg";
-import SpaceDreamImage from "/src/assets/images/spaceDream-min.png";
 
 const MyProjects = forwardRef((props, ref) => {
 	const [modalState, setModalState] = useState(false);
-	const logoTaalToolBox = useRef(null);
 
 	const triggerModal = () => {
 		setModalState(!modalState);
 	};
-	// console.log(logoTaalToolBox.current);
+
 	return (
 		<Main ref={ref}>
-			<ProjectDescription toggleModal={modalState} />
-			{console.log("render project")}
-			<div className="content">
+			{/* <ProjectDescription toggleModal={modalState} /> */}
+			<div className="not_visible">
 				<div>
 					<h1 className="title">
 						<span
@@ -49,7 +46,7 @@ const MyProjects = forwardRef((props, ref) => {
 						My projects
 					</h1>
 				</div>
-				<p style={{ textAlign: "center" }}>
+				<p style={{ textAlign: "center" }} className="section_desc">
 					Here is a short list of my{" "}
 					<a
 						className="noticable"
@@ -64,7 +61,7 @@ const MyProjects = forwardRef((props, ref) => {
 					<div className="instruction">
 						<p>Hover here to see my projects</p>
 					</div>
-					<div className="card">
+					<div className="card" id="carRentalCard">
 						<p className="card_title" id="carRental">
 							CarRental
 						</p>
@@ -120,7 +117,7 @@ const MyProjects = forwardRef((props, ref) => {
 							/>
 						</div>
 					</div>
-					<div className="card">
+					<div className="card" id="taalToolBoxCard">
 						<p className="card_title" id="taalToolBox">
 							TaalToolBox
 						</p>
@@ -172,26 +169,13 @@ const MyProjects = forwardRef((props, ref) => {
 						</div>
 					</div>
 					<div className="card" id="no_red">
-						<p className="card_title" id="spaceDream">
-							Space DREAM
-						</p>
-						<div className="card_illustration">
-							<img
-								src={SpaceDreamImage}
-								alt="Unknown app preview image"
-								className="preview"
-							/>
+						<div className="card_illustration_unavailable">
 							<img
 								src={SpaceDreamLogo}
 								alt="Unknown app logo"
 								className="card_logo"
 							/>
 						</div>
-						<p className="card_description">
-							Yeah you though that you would be able to see what
-							this subject is about just by deleting the blured
-							div but this is not the case my friend. Nice try !
-						</p>
 						<div className="unavailable">
 							<p>This project is currently in development</p>
 						</div>
@@ -204,6 +188,7 @@ const MyProjects = forwardRef((props, ref) => {
 
 const Main = styled.div`
 	width: 100%;
+	min-height: 100vh;
 	padding: 150px 0;
 	display: flex;
 	flex-direction: column;
@@ -217,15 +202,24 @@ const Main = styled.div`
 		font-family: Orbitron;
 		margin: 5px 0;
 	}
-
+	.not_visible {
+		display: none !important;
+	}
 	.content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 80%;
-		max-width: 1200px;
 		overflow: visible;
 		position: relative;
+		.section_desc {
+			opacity: 0;
+			animation: appear 0.5s ease 0.5s forwards;
+		}
+		.title {
+			opacity: 0;
+			animation: appear 0.5s ease 0.5s forwards;
+		}
 		.noticable {
 			color: var(--third-color);
 			display: inline-block;
@@ -268,6 +262,7 @@ const Main = styled.div`
 				outline: 1px solid var(--second-color);
 				width: 28%;
 				max-width: 330px;
+				min-width: 260px;
 				text-align: center;
 				gap: 25px;
 				padding: 10px 0;
@@ -276,6 +271,7 @@ const Main = styled.div`
 				border-radius: 5px;
 				overflow: hidden;
 				box-shadow: black 0px 20px 20px -25px;
+				visibility: hidden;
 				p {
 					margin: 0;
 					color: var(--second-color);
@@ -340,6 +336,32 @@ const Main = styled.div`
 						transition: opacity 0.5s ease 0.3s;
 					} */
 				}
+				.card_illustration_unavailable {
+					width: 100%;
+					height: 100%;
+					filter: saturate(0);
+					transition: 0.8s ease;
+					position: relative;
+					.card_logo {
+						width: 50%;
+						height: auto;
+						top: 30%;
+						left: 25%;
+						position: absolute;
+						transition: 0.3s ease;
+						overflow: visible;
+						cursor: pointer;
+						will-change: transform;
+						img {
+							width: 100%;
+						}
+					}
+					.card_logo:hover {
+						transform: scale(1.1) translateY(-10px);
+						transition: 0.3s ease;
+						will-change: transform;
+					}
+				}
 				.card_description {
 					font-family: Prompt;
 					font-size: 13px;
@@ -369,7 +391,8 @@ const Main = styled.div`
 					width: 101%;
 					position: absolute;
 					height: 100%;
-					backdrop-filter: blur(5px);
+					/* backdrop-filter: blur(5px); */
+					background: rgba(155, 155, 155, 0.2);
 					top: 0;
 					left: 0;
 					display: flex;
@@ -385,9 +408,21 @@ const Main = styled.div`
 				}
 			}
 			.card:hover {
+				background: rgba(255, 255, 255, 0.45);
+				transform: rotate(0deg) scale(1.05);
+				/* transform: rotate3d(180deg); */
+				transition: 0.2s ease, background 0.8s ease;
+				box-shadow: black 0px 20px 30px -20px;
+				outline: 1px solid var(--third-color);
 				.card_illustration {
 					filter: saturate(1);
 					transition: 0.8s ease;
+				}
+				.card_illustration_unavailable {
+					filter: saturate(1);
+					.card_logo {
+						filter: drop-shadow(0 0 10px #9c94fa);
+					}
 				}
 				.technologies {
 					transform: translateY(-100%);
@@ -397,28 +432,37 @@ const Main = styled.div`
 				}
 				#carRental {
 					color: #0078b5;
-					transition: 0.4s ease;
+					filter: drop-shadow(0 0 8px #0078b5);
+					transition: color 0.4s ease, filter 0.8s ease;
 				}
 				#taalToolBox {
 					color: #026b30;
-					transition: 0.4s ease;
+					filter: drop-shadow(0 0 8px #026b30);
+					transition: color 0.4s ease, filter 0.8s ease;
 				}
 				#spaceDream {
 					color: #9c94fa;
-					transition: 0.4s ease;
+					filter: drop-shadow(0 0 8px #9c94fa);
+					transition: color 0.4s ease, filter 0.8s ease;
 				}
-				transform: scale(1.05);
-				/* transform: rotate3d(180deg); */
-				transition: 0.2s ease;
-				box-shadow: black 0px 20px 30px -20px;
-				outline: 1px solid var(--third-color);
+			}
+			#carRentalCard {
+				animation: cardAppear 1s ease 1s forwards;
+			}
+			#taalToolBoxCard {
+				animation: cardAppear 1s ease 1.1s forwards;
+			}
+			#no_red {
+				animation: cardAppear 1s ease 1.2s forwards;
 			}
 			#no_red:hover {
-				outline: none;
+				outline: 1px solid var(--second-color);
+				background: none;
 			}
 		}
 	}
 	.content::before {
+		opacity: 0;
 		content: "";
 		width: 25%;
 		height: 15%;
@@ -430,8 +474,10 @@ const Main = styled.div`
 		border-top: 2px solid var(--third-color);
 		border-right: 2px solid var(--third-color);
 		transition: 0.5s ease;
+		animation: appear 1s ease 2s forwards;
 	}
 	.content::after {
+		opacity: 0;
 		content: "";
 		width: 25%;
 		height: 15%;
@@ -444,6 +490,7 @@ const Main = styled.div`
 		border-left: 2px solid var(--third-color);
 		transition: 0.5s ease;
 		will-change: transform;
+		animation: appear 1s ease 2s forwards;
 	}
 	.content:hover::after {
 		transform: translateY(30px) translateX(-30px);
@@ -460,7 +507,7 @@ const Main = styled.div`
 			font-size: 40px;
 		}
 	}
-	@media (max-height: 900px) {
+	@media (max-height: 950px) {
 		.content {
 			.cards_list {
 				.card {
@@ -475,7 +522,7 @@ const Main = styled.div`
 			}
 		}
 	}
-	@media (max-width: 1000px) {
+	@media (max-width: 1050px) {
 		padding: 0;
 		.content {
 			.cards_list {
@@ -492,6 +539,28 @@ const Main = styled.div`
 					}
 				}
 			}
+		}
+	}
+	@keyframes appear {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes cardAppear {
+		0% {
+			visibility: visible;
+			opacity: 0;
+		}
+		99% {
+			visibility: visible;
+			opacity: 1;
+		}
+		100% {
+			visibility: visible;
+			backdrop-filter: blur(5px);
 		}
 	}
 `;

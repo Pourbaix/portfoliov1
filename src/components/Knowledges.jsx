@@ -81,18 +81,20 @@ const Knowledges = forwardRef((props, ref) => {
 		},
 	];
 
-	const formatedHtmlSelector = contentList.map((object, i) => (
-		<div
-			className="selector_item"
-			id={i + 1}
-			key={i}
-			onClick={(e) => {
-				updateElementClicked(e.target);
-			}}
-		>
-			<img className="selector_logo" src={object.logo} />
-		</div>
-	));
+	const formatedHtmlSelector = contentList.map((object, i) => {
+		return (
+			<div
+				className="selector_item"
+				id={i + 1}
+				key={i}
+				onClick={(e) => {
+					updateElementClicked(e.target);
+				}}
+			>
+				<img className="selector_logo" src={object.logo} />
+			</div>
+		);
+	});
 
 	// ----------------------------
 	// getDivFromElement(:element:)
@@ -187,11 +189,12 @@ const Knowledges = forwardRef((props, ref) => {
 
 	useEffect(() => {
 		// Select React as the first knowledge element visible
-		updateElementClicked(document.getElementById(1));
+		swapStyle(document.getElementById(1));
+		changeDisplay(document.getElementById(1));
 	}, []);
 	return (
 		<Main ref={ref}>
-			<div className="content">
+			<div className="content not_visible">
 				<div className="header_container">
 					<h1 className="header">
 						<span
@@ -242,11 +245,15 @@ const Knowledges = forwardRef((props, ref) => {
 const Main = styled.div`
 	width: 100%;
 	margin-top: 100px;
-	min-height: max-content;
+	min-height: 100vh;
+	max-height: max-content;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	.not_visible {
+		display: none !important;
+	}
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -261,26 +268,43 @@ const Main = styled.div`
 
 		.header_container {
 			width: 100%;
+			margin-bottom: 40px;
+			padding-bottom: 2px;
+			border-bottom: 2px dashed var(--second-color);
+			overflow: visible;
+			position: relative;
+			left: 0;
 			/* display: flex; */
 			.header {
 				font-family: Russo One, monospace;
 				position: relative;
-				margin-bottom: 40px;
-				padding-bottom: 2px;
 				/* padding-left: 30px; */
+				margin: 0;
 				color: var(--second-color);
 				/* letter-spacing: 1px; */
 				/* width: 100%; */
 				text-align: left;
 				justify-self: left;
 				font-size: 40px;
-				border-bottom: 2px dashed var(--second-color);
+				opacity: 0;
+				animation: appearingmain 0.3s ease 0.5s forwards;
 			}
 			@media (max-width: 400px) {
 				.header {
 					font-size: 35px;
 				}
 			}
+		}
+		.header_container::after {
+			content: "";
+			width: 100%;
+			height: 110%;
+			top: 0;
+			left: 0;
+			position: absolute;
+			background: var(--main-color);
+			transform-origin: center right;
+			animation: deploy 0.5s linear 0.5s forwards;
 		}
 		.main_content {
 			display: flex;
@@ -302,6 +326,8 @@ const Main = styled.div`
 				overflow: visible;
 				position: relative;
 				border: 1px solid var(--fourth-color);
+				opacity: 0;
+				animation: appearingmain 0.3s ease 0.25s forwards;
 				.selector_logo {
 					margin: 15px 0;
 					height: 45px;
@@ -419,6 +445,14 @@ const Main = styled.div`
 				/* border: 1px solid blue; */
 				min-height: fit-content;
 			}
+		}
+	}
+	@keyframes deploy {
+		0% {
+			transform: scaleX(1);
+		}
+		100% {
+			transform: scaleX(0);
 		}
 	}
 `;

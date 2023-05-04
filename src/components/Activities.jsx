@@ -89,7 +89,20 @@ const Activities = forwardRef((props, ref) => {
 
 	return (
 		<Main ref={ref}>
-			<h1 style={{ fontFamily: "Russo One" }}>Activities</h1>
+			<h1 className="header">
+				<span
+					style={{
+						color: getComputedStyle(
+							document.documentElement
+						).getPropertyValue("--third-color"),
+						fontSize: "28px",
+					}}
+				>
+					4.
+				</span>
+				Activities
+			</h1>
+			{/* <h1 style={{ fontFamily: "Russo One" }}>Activities</h1> */}
 			<div className="indicator_container">
 				<div className="indicator_line"></div>
 				<div
@@ -271,6 +284,19 @@ const Main = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	.header {
+		font-family: Russo One, monospace;
+		position: relative;
+		margin-bottom: 40px;
+		padding-bottom: 2px;
+		/* padding-left: 30px; */
+		color: var(--second-color);
+		/* letter-spacing: 1px; */
+		/* width: 100%; */
+		text-align: left;
+		justify-self: left;
+		font-size: 55px;
+	}
 	.indicator_container {
 		width: 90%;
 		min-height: 100px;
@@ -433,6 +459,7 @@ const Main = styled.div`
 							flex-direction: column;
 							justify-content: space-between;
 							z-index: -2;
+							background: var(--fourth-color);
 							.decoration_top {
 								width: 100%;
 								height: 50px;

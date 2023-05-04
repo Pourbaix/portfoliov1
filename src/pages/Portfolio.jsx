@@ -23,14 +23,29 @@ function Portfolio() {
 
 	const container = useRef(null);
 
-	const [myProjectsVisibility, setMyProjectsVisibility] = useState("none");
+	const isOnMobile = () => {
+		let mobileNav = false;
+		if (
+			navigator.userAgent.match(/Android/i) ||
+			navigator.userAgent.match(/iPhone/i)
+		) {
+			mobileNav = true;
+		}
+		return "ontouchstart" in document.documentElement || mobileNav;
+	};
 
 	const scrollToComponent = (component) => {
-		component.scrollIntoView({
-			behavior: "smooth",
-			block: "center",
-			inline: "center",
-		});
+		isOnMobile()
+			? component.scrollIntoView({
+					behavior: "smooth",
+					block: "start",
+					inline: "center",
+			  })
+			: component.scrollIntoView({
+					behavior: "smooth",
+					block: "center",
+					inline: "center",
+			  });
 	};
 
 	const scrollFunction = (divRef) => {
@@ -43,50 +58,39 @@ function Portfolio() {
 		} else {
 			scrollToComponent(aboutMe.current);
 		}
-		// switch (divRef) {
-		// 	case 0:
-		// 		scrollToComponent(aboutMe.current);
-		// 		console.log("hello 0");
-		// 	case 1:
-		// 		scrollToComponent(myProjects.current);
-		// 		console.log("hello 1");
-		// 	case 2:
-		// 		scrollToComponent(knowledges.current);
-		// 		console.log("hello 2");
-		// }
 	};
 
-	// const scrolled = () => {
-	// 	console.log(
-	// 		parseInt(myProjects.current.getBoundingClientRect().top),
-	// 		parseInt(getComputedStyle(myProjects.current).height)
-	// 	);
-	// 	if (
-	// 		myProjects.current.getBoundingClientRect().top <
-	// 		parseInt(getComputedStyle(myProjects.current).height) / 1.0
-	// 	) {
-	// 		setMyProjectsVisibility("flex");
-	// 	}
-	// };
-	// window.onscroll = scrolled;
+	const observer = new IntersectionObserver(
+		(event) => {
+			console.log(event);
+			event.forEach((element) => {
+				element.target.childNodes[0].classList.toggle(
+					"not_visible",
+					!element.isIntersecting
+				);
+				element.target.childNodes[0].classList.toggle(
+					"content",
+					element.isIntersecting
+				);
+				if (element.isIntersecting) observer.unobserve(element.target);
+			});
+		},
+		{
+			threshold: 0.5,
+		}
+	);
+
+	useEffect(() => {
+		observer.observe(myProjects.current);
+		observer.observe(knowledges.current);
+	}, []);
 
 	return (
 		<Main>
 			<Header onSwapToContent={scrollFunction} />
 			<Content ref={container}>
 				<AboutMe ref={aboutMe} />
-				<Suspense
-					fallback={
-						<div className="loading_content">
-							<p>Test Loading</p>
-						</div>
-					}
-				>
-					<MyProjects
-						ref={myProjects}
-						visibility={myProjectsVisibility}
-					/>
-				</Suspense>
+				<MyProjects ref={myProjects} />
 				<Knowledges ref={knowledges} />
 				<Activities ref={activities} />
 				<SocialBar />

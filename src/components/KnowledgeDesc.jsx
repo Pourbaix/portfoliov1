@@ -20,6 +20,7 @@ const KnowledgeDesc = (props) => {
 				{props.name ? (
 					<>
 						<div className="desc">
+							<div className="filler"></div>
 							<div
 								className="logo_container"
 								ref={logoContainer}
@@ -150,6 +151,17 @@ const Content = styled.div`
 			margin-bottom: 35px;
 			font-family: Russo One;
 		}
+		.filler {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: var(--main-color);
+			content: "";
+			z-index: 10;
+			animation: deployVertical 1s ease 1s forwards;
+		}
 		.logo_container {
 			width: 200px;
 			display: flex;
@@ -207,6 +219,9 @@ const Content = styled.div`
 		top: -10px;
 		left: 0;
 		content: "";
+		transform-origin: right;
+		animation: deployLine 0.5s ease reverse forwards;
+		opacity: 0;
 	}
 	.desc:after {
 		position: absolute;
@@ -215,6 +230,9 @@ const Content = styled.div`
 		bottom: -10px;
 		left: 0;
 		content: "";
+		transform-origin: left;
+		animation: deployLine 0.5s ease reverse forwards;
+		opacity: 0;
 	}
 	@keyframes levitate {
 		0% {
@@ -226,6 +244,24 @@ const Content = styled.div`
 		}
 		100% {
 			transform: translateY(0);
+		}
+	}
+	@keyframes deployLine {
+		0% {
+			opacity: 1;
+			transform: scaleX(1);
+		}
+		100% {
+			opacity: 1;
+			transform: scaleX(0);
+		}
+	}
+	@keyframes deployVertical {
+		0% {
+			transform: scaleY(1);
+		}
+		100% {
+			transform: scaleY(0);
 		}
 	}
 `;

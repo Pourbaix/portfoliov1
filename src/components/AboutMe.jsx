@@ -29,9 +29,10 @@ const AboutMe = forwardRef((props, ref) => {
 						<b style={{ color: "red", fontFamily: "Russo one" }}>
 							Michaël
 						</b>{" "}
-						also known as MaZeppAa, and i am a web developper ! I
-						love learning new things about coding and all other
-						stuff. I am mainly focused on frontend development.
+						and i am a web developper ! I love learning new things
+						about coding and all other stuff. I am mainly focused on
+						frontend development and I like to connect the two
+						sides.
 					</p>
 					<h3>What I like to do:</h3>
 					<div className="like">
@@ -49,8 +50,6 @@ const AboutMe = forwardRef((props, ref) => {
 const Main = styled.div`
 	width: 100%;
 	height: 100vh;
-	/* min-height: 1000px; */
-	/* border: 1px solid var(--third-color); */
 	display: flex;
 	flex-direction: column;
 	align-items: center;

@@ -83,6 +83,7 @@ function Portfolio() {
 	useEffect(() => {
 		observer.observe(myProjects.current);
 		observer.observe(knowledges.current);
+		observer.observe(activities.current);
 	}, []);
 
 	return (

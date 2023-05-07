@@ -62,114 +62,121 @@ const MyProjects = forwardRef((props, ref) => {
 						<p>Hover here to see my projects</p>
 					</div>
 					<div className="card" id="carRentalCard">
-						<p className="card_title" id="carRental">
-							CarRental
-						</p>
-						<div className="card_illustration">
-							<img
-								src={CarRentalImage}
-								alt="carRental app preview image"
-								className="preview"
-							/>
-							<a
-								href="https://github.com/CardinPatson/Car_Location"
-								// onClick={triggerModal}
-								target="_blank"
-								className="card_logo"
-							>
+						<div className="card_face card_front">
+							<p className="card_title" id="carRental">
+								CarRental
+							</p>
+							<div className="card_illustration">
 								<img
-									src={CarRentalLogo}
-									alt="carRental app logo"
+									src={CarRentalImage}
+									alt="carRental app preview image"
+									className="preview"
 								/>
-							</a>
-						</div>
-						<p className="card_description">
-							A car renting app created by a group of 4 motivated
-							people. Many possibilities for admin and users, with
-							a connection / registration system. This project was
-							created during my studies.
-						</p>
-						<div className="technologies">
-							<DiReact
-								className="techno_icon"
-								size="40px"
-								color="#61DBFB"
-							/>
-							<DiPostgresql
-								className="techno_icon"
-								size="40px"
-								color=" #0064a5"
-							/>
-							<SiExpress
-								className="techno_icon"
-								size="40px"
-								color="black"
-							/>
-							<SiStyledcomponents
-								className="techno_icon"
-								size="40px"
-								color="purple"
-							/>
-							<SiSequelize
-								className="techno_icon"
-								size="40px"
-								color="#3483eb"
-							/>
+								<a
+									href="https://github.com/CardinPatson/Car_Location"
+									// onClick={triggerModal}
+									target="_blank"
+									className="card_logo"
+								>
+									<img
+										src={CarRentalLogo}
+										alt="carRental app logo"
+									/>
+								</a>
+							</div>
+							<p className="card_description">
+								A car renting app created by a group of 4
+								motivated people. Many possibilities for admin
+								and users, with a connection / registration
+								system. This project was created during my
+								studies.
+							</p>
+							<div className="technologies">
+								<DiReact
+									className="techno_icon"
+									size="40px"
+									color="#61DBFB"
+								/>
+								<DiPostgresql
+									className="techno_icon"
+									size="40px"
+									color=" #0064a5"
+								/>
+								<SiExpress
+									className="techno_icon"
+									size="40px"
+									color="black"
+								/>
+								<SiStyledcomponents
+									className="techno_icon"
+									size="40px"
+									color="purple"
+								/>
+								<SiSequelize
+									className="techno_icon"
+									size="40px"
+									color="#3483eb"
+								/>
+							</div>
 						</div>
 					</div>
-					<div className="card" id="taalToolBoxCard">
-						<p className="card_title" id="taalToolBox">
-							TaalToolBox
-						</p>
-						<div className="card_illustration">
-							<img
-								src={TaalToolBoxImage}
-								alt="TaalToolBox app preview image"
-								className="preview"
-							/>
-							<a
-								href="https://github.com/Rachiid007/TaalToolBox"
-								// onClick={triggerModal}
-								target="_blank"
-								className="card_logo"
-							>
+					<div className="card flipped" id="taalToolBoxCard">
+						<div className="card_face card_front">
+							<p className="card_title" id="taalToolBox">
+								TaalToolBox
+							</p>
+							<div className="card_illustration">
 								<img
-									src={TaalToolBoxLogo}
-									alt="TaalToolBox app logo"
+									src={TaalToolBoxImage}
+									alt="TaalToolBox app preview image"
+									className="preview"
 								/>
-							</a>
-						</div>
-						<p className="card_description">
-							An app to learn Dutch. Buildt with a group of 7
-							people during my studies. This app provides
-							different games to learn the language and a system
-							that allows the teacher to manage his students.
-						</p>
-						<div className="technologies">
-							<IoLogoVue
-								className="techno_icon"
-								size="40px"
-								color=" #42b883"
-							/>
-							<DiPostgresql
-								className="techno_icon"
-								size="40px"
-								color=" #0064a5"
-							/>
-							<SiTypescript
-								className="techno_icon"
-								size="40px"
-								color="#007acc"
-							/>
-							<SiNestjs
-								className="techno_icon"
-								size="40px"
-								color="red"
-							/>
+								<a
+									href="https://github.com/Rachiid007/TaalToolBox"
+									// onClick={triggerModal}
+									target="_blank"
+									className="card_logo"
+								>
+									<img
+										src={TaalToolBoxLogo}
+										alt="TaalToolBox app logo"
+									/>
+								</a>
+							</div>
+							<p className="card_description">
+								An app to learn Dutch. Buildt with a group of 7
+								people during my studies. This app provides
+								different games to learn the language and a
+								system that allows the teacher to manage his
+								students.
+							</p>
+							<div className="technologies">
+								<IoLogoVue
+									className="techno_icon"
+									size="40px"
+									color=" #42b883"
+								/>
+								<DiPostgresql
+									className="techno_icon"
+									size="40px"
+									color=" #0064a5"
+								/>
+								<SiTypescript
+									className="techno_icon"
+									size="40px"
+									color="#007acc"
+								/>
+								<SiNestjs
+									className="techno_icon"
+									size="40px"
+									color="red"
+								/>
+							</div>
 						</div>
 					</div>
 					<div className="card" id="no_red">
-						<div className="card_illustration_unavailable">
+						{/* <div className="card_face card_front"></div> */}
+						<div className="card_face card_back">
 							<img
 								src={SpaceDreamLogo}
 								alt="Unknown app logo"
@@ -179,6 +186,10 @@ const MyProjects = forwardRef((props, ref) => {
 						<div className="unavailable">
 							<p>This project is currently in development</p>
 						</div>
+					</div>
+					<div className="card_test1">
+						<div className="backside"></div>
+						<div className="frontside"></div>
 					</div>
 				</div>
 			</div>
@@ -243,6 +254,7 @@ const Main = styled.div`
 			padding: 10px 0;
 			margin-top: 20px;
 			gap: 35px;
+			/* perspective: 1000px; */
 			.instruction {
 				font-size: 25px;
 				font-family: Prompt;
@@ -254,100 +266,49 @@ const Main = styled.div`
 				padding: 10px;
 				display: none;
 			}
+			/* .flipped {
+				transform: rotateY(-180deg);
+			} */
 			.card {
-				height: 420px;
+				height: 450px;
 				display: flex;
 				flex-direction: column;
-				align-items: center;
 				outline: 1px solid var(--second-color);
 				width: 28%;
 				max-width: 330px;
 				min-width: 260px;
-				text-align: center;
-				gap: 25px;
-				padding: 10px 0;
+				/* padding: 10px 0; */
 				transition: 0.1s ease;
-				position: relative;
 				border-radius: 5px;
-				overflow: hidden;
 				box-shadow: black 0px 20px 20px -25px;
 				visibility: hidden;
-				p {
-					margin: 0;
-					color: var(--second-color);
-				}
-				.card_title {
-					font-family: Orbitron;
-					font-size: 30px;
-					color: var(--second-color);
-					padding-top: 15px;
-					transition: 0.2s ease;
-				}
-				.card_illustration {
-					position: relative;
-					width: 100%;
-					margin-bottom: 35px;
-					height: 35%;
-					filter: saturate(0);
-					transition: 0.8s ease;
-					.preview {
-						width: 100%;
-						height: auto;
-						max-height: 100%;
-					}
-					.card_logo {
-						width: 25%;
-						height: auto;
-						top: 80%;
-						left: 37.5%;
-						position: absolute;
-						transition: 0.3s ease;
-						overflow: visible;
-						cursor: pointer;
-						will-change: transform;
-						img {
-							width: 100%;
-						}
-					}
-					.card_logo:hover {
-						transform: scale(1.1) translateY(-10px);
-						transition: 0.3s ease;
-						will-change: transform;
-						.card_illustration {
-							opacity: 1;
-						}
-					}
-					/* .card_logo::after {
-						position: absolute;
-						content: "More Details";
-						width: max-content;
-						top: 95%;
-						left: -17%;
-						border: 1px solid rgba(0, 0, 0, 0.4);
-						border-radius: 2px;
-						padding: 3px;
-						background: var(--main-color);
-						color: black;
-						opacity: 0;
-						transition: opacity 0.2s ease;
-					}
-					.card_logo:hover::after {
-						opacity: 1;
-						transition: opacity 0.5s ease 0.3s;
-					} */
-				}
-				.card_illustration_unavailable {
+				overflow: hidden;
+				position: relative;
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				.card_face {
 					width: 100%;
 					height: 100%;
-					filter: saturate(0);
+					display: flex;
+					position: absolute;
+					align-items: center;
+					text-align: center;
+					overflow: hidden;
+				}
+				.card_back {
+					/* filter: saturate(0); */
 					transition: 0.8s ease;
-					position: relative;
+					justify-content: center;
+					overflow: hidden;
+					opacity: 0.5;
+					-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
 					.card_logo {
 						width: 50%;
 						height: auto;
-						top: 30%;
+						/* top: 30%;
 						left: 25%;
-						position: absolute;
+						position: absolute; */
 						transition: 0.3s ease;
 						overflow: visible;
 						cursor: pointer;
@@ -362,29 +323,86 @@ const Main = styled.div`
 						will-change: transform;
 					}
 				}
-				.card_description {
-					font-family: Prompt;
-					font-size: 13px;
-					padding: 0 10px;
-					line-height: 18px;
-					margin-bottom: 20px;
-				}
-				.technologies {
-					width: 100%;
-					height: 15%;
-					position: absolute;
-					bottom: -16%;
-					transition: 0.4s ease;
-					display: flex;
-					flex-direction: row;
-					justify-content: center;
-					align-items: center;
-					opacity: 0;
-					overflow: hidden;
+				.card_front {
 					gap: 5px;
-					.techno_icon {
-						height: 60%;
-						width: auto;
+					flex-direction: column;
+					-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+					p {
+						margin: 0;
+						color: var(--second-color);
+					}
+
+					.card_title {
+						font-family: Orbitron;
+						font-size: 25px;
+						color: var(--second-color);
+						padding-top: 10px;
+						padding-bottom: 5px;
+						transition: 0.2s ease;
+						margin: 0;
+					}
+					.card_illustration {
+						position: relative;
+						width: 100%;
+						margin-bottom: 35px;
+						height: 35%;
+						filter: saturate(0);
+						transition: 0.8s ease;
+						.preview {
+							width: 100%;
+							height: auto;
+							max-height: 100%;
+						}
+						.card_logo {
+							width: 25%;
+							height: auto;
+							top: 80%;
+							left: 37.5%;
+							position: absolute;
+							transition: 0.3s ease;
+							overflow: visible;
+							cursor: pointer;
+							will-change: transform;
+							img {
+								width: 100%;
+							}
+						}
+						.card_logo:hover {
+							transform: scale(1.1) translateY(-10px);
+							transition: 0.3s ease;
+							will-change: transform;
+							.card_illustration {
+								opacity: 1;
+							}
+						}
+					}
+					.card_description {
+						font-family: Prompt;
+						font-size: 13px;
+						padding: 0 10px;
+						line-height: 18px;
+						margin-bottom: 20px;
+					}
+					.technologies {
+						width: 100%;
+						height: 15%;
+						position: absolute;
+						bottom: -60px;
+						transition: 0.4s ease;
+						display: flex;
+						flex-direction: row;
+						justify-content: center;
+						align-items: center;
+						opacity: 0;
+						overflow: hidden;
+						gap: 5px;
+						z-index: -1;
+						will-change: transform;
+						.techno_icon {
+							height: 60%;
+							width: auto;
+						}
 					}
 				}
 				.unavailable {
@@ -399,6 +417,8 @@ const Main = styled.div`
 					justify-content: center;
 					align-items: center;
 					padding: 0;
+					text-align: center;
+					z-index: 2;
 					p {
 						width: 100%;
 						padding: 5px;
@@ -409,23 +429,22 @@ const Main = styled.div`
 			}
 			.card:hover {
 				background: rgba(255, 255, 255, 0.45);
-				transform: rotate(0deg) scale(1.05);
-				/* transform: rotate3d(180deg); */
-				transition: 0.2s ease, background 0.8s ease;
+				transform: scale(1.05);
+				transition: 0.4s ease, background 0.8s ease;
 				box-shadow: black 0px 20px 30px -20px;
 				outline: 1px solid var(--third-color);
 				.card_illustration {
 					filter: saturate(1);
 					transition: 0.8s ease;
 				}
-				.card_illustration_unavailable {
+				.card_back {
 					filter: saturate(1);
 					.card_logo {
 						filter: drop-shadow(0 0 10px #9c94fa);
 					}
 				}
 				.technologies {
-					transform: translateY(-100%);
+					transform: translateY(-60px);
 					opacity: 1;
 					transition: 0.4s ease;
 					will-change: transform;
@@ -511,7 +530,7 @@ const Main = styled.div`
 		.content {
 			.cards_list {
 				.card {
-					max-height: 350px;
+					max-height: 380px;
 					max-width: 280px;
 					gap: 5px;
 					.card_title {
@@ -560,7 +579,6 @@ const Main = styled.div`
 		}
 		100% {
 			visibility: visible;
-			backdrop-filter: blur(5px);
 		}
 	}
 `;

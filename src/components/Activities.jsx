@@ -12,7 +12,7 @@ import Portfolio from "/src/assets/logo/activities/portfolio.svg";
 import MachineLearning from "/src/assets/images/evidences/machineLearning.png";
 import Cpp from "/src/assets/images/evidences/Cpp.png";
 import PortfolioScreen from "/src/assets/images/evidences/Portfolio.png";
-import HackathonCertif from "/src/assets/images/evidences/Hackathon.png";
+import HackathonCertif from "/src/assets/images/evidences/hackathon.png";
 
 //Video for evidences
 import Video from "/src/assets/rickrolled.mp4";

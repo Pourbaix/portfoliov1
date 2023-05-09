@@ -8,6 +8,15 @@ import Music from "/src/assets/logo/activities/piano.svg";
 import Editing from "/src/assets/logo/activities/video-editing.svg";
 import Portfolio from "/src/assets/logo/activities/portfolio.svg";
 
+// Images for evidences
+import MachineLearning from "/src/assets/images/evidences/machineLearning.png";
+import Cpp from "/src/assets/images/evidences/Cpp.png";
+import PortfolioScreen from "/src/assets/images/evidences/Portfolio.png";
+import HackathonCertif from "/src/assets/images/evidences/Hackathon.jpeg";
+
+//Video for evidences
+import Video from "/src/assets/rickrolled.mp4";
+
 const Activities = forwardRef((props, ref) => {
 	const slider = useRef(null);
 	const [currentPage, setCurrentPage] = useState(0);
@@ -15,51 +24,88 @@ const Activities = forwardRef((props, ref) => {
 	const data = [
 		{
 			title: "OpenClassrooms course 1: Introduction to machine learning",
-			image: "",
-			image_descr: "",
+			main_evidence: MachineLearning,
+			main_evidence_type: "image",
+			main_evidence_descr: "Evidence for machine learning course",
 			activity_descr:
 				"This is the first online course I fully completed. I wanted to learn more about machine learning because it was a very growing subject and it seemed very interesting. I learned a lot during this course: How we can classify different types of learning algorithms and what are the best suiting models for certain use cases. We had a course about that subject in school but I already knew the basic thanks to this online course.",
 			activity_date: "Summer holidays 2021",
+			evidence_link: [
+				{
+					url: "https://drive.google.com/drive/folders/1AKggq4zqF6F_KqvEUIGCH_fGh9WfHQm_?usp=sharing",
+					label: "Link to screenshots",
+				},
+				{
+					url: "https://github.com/Pourbaix/InitiationMachineLearning",
+					label: "Link to course project",
+				},
+			],
 		},
 		{
 			title: "OpenClassrooms course 2: Introduction to C++",
-			image: "",
-			image_descr: "",
+			main_evidence: Cpp,
+			main_evidence_type: "image",
+			main_evidence_descr: "Evidence image for Cpp course",
 			activity_descr:
 				"After doing the course on machine learning i tougth it might be interesting to learn C++ cause we were already introduced to C in some courses from EPHEC. So I did this online course and I created a little command line app to apply the things I just learned. Nothing to creazy but it was, I think, a good way to indtroduce myself to C++.",
 			activity_date: "Summer holidays 2021",
+			evidence_link: [
+				{
+					url: "https://drive.google.com/drive/folders/1AKggq4zqF6F_KqvEUIGCH_fGh9WfHQm_?usp=sharing",
+					label: "Link to screenshots",
+				},
+				{
+					url: "https://github.com/Pourbaix/InitiationCpp",
+					label: "Link to personal project",
+				},
+			],
 		},
 		{
 			title: "Hackathon for sustainable development",
-			image: "",
-			image_descr: "",
+			main_evidence: HackathonCertif,
+			main_evidence_type: "image",
+			main_evidence_descr:
+				"Certification for participating to the 2022 EPHEC Hackathon",
 			activity_descr:
 				"My first hackathon, organized by my school. It was an incredible experiment and I loved the idea of working hard on a projet for a few days and compete with other teams. We worked on an application to learn braille and other language for people with disabilities. We also putted a big attention on accessibility. (We got TOP 2 😊)",
 			activity_date: "28-30 October 2022",
+			evidence_link: [
+				{
+					url: "https://github.com/ChaosArnhug/Hackaton-Ephec-2022",
+					label: "Link to our project",
+				},
+			],
 		},
 		{
 			title: "Music: learning piano",
-			image: "",
-			image_descr: "",
+			main_evidence: Video,
+			main_evidence_type: "video",
+			main_evidence_descr: "A piano demonstration as an evidence",
 			activity_descr:
-				"I started learning piano thanks to my mom. In fact, she took courses for 15 years but she stopped when growing up. Sometimes she still played it at thome and one day I wanted to try. She then teached me a basic and then I realized that freaking love it! Now I'm learning piano by myself and I must say it has teached me some great things like dedication and never giving up.",
+				"I started learning piano thanks to my mom. In fact, she took courses for 15 years but she stopped when growing up. Sometimes she still played it at thome and one day I wanted to try. She then teached me a basic piece and I realized that I freaking loved it! Now I'm learning piano by myself and I must say it has teached me some great things like dedication and never giving up.",
 			activity_date: "2018-NOW",
+			evidence_link: "",
 		},
 		{
 			title: "Video Editing",
-			image: "",
-			image_descr: "",
+			main_evidence: "",
+			main_evidence_type: "image",
+			main_evidence_descr: "",
 			activity_descr:
 				"We did some video editing in the communication course and it gave me the will to get back to it. Indeed, I already did a lot of video editing even before the communication course. Me and my friend we used to play video-games during our free-time and I did some video of those sessions that we posted on internet.",
 			activity_date: "2017-2023",
+			evidence_link: "",
 		},
 		{
 			title: "Making of my portfolio",
-			image: "",
-			image_descr: "",
+			main_evidence: PortfolioScreen,
+			main_evidence_type: "image",
+			main_evidence_descr:
+				"Screenshot of the main page of this portfolio",
 			activity_descr:
-				"I really enjoyed doing this portfolio as it allowed me to use what I learned from my years at the EPHEC. I also enjoyed imaginating all the components in this page and the way they will look like. I think it will can even serve me to find a work.",
+				"I really enjoyed doing this portfolio as it allowed me to use what I learned from my years at the EPHEC. I also enjoyed imaginating all the components in this page and the way they will look like. I think it can even be usefull to find a job in the futur. This portfolio is made ",
 			activity_date: "2022-2023",
+			evidence_link: "",
 		},
 	];
 
@@ -203,18 +249,32 @@ const Activities = forwardRef((props, ref) => {
 									</h3>
 									<div className="page_content">
 										<div className="content_image">
-											{element.image ? (
-												<img
-													src={element.image}
-													alt={element.image_descr}
-												/>
+											{element.main_evidence ? (
+												element.main_evidence_type ==
+												"image" ? (
+													<img
+														src={
+															element.main_evidence
+														}
+														alt={
+															element.main_evidence_descr
+														}
+													/>
+												) : (
+													<video controls>
+														<source
+															src={Video}
+															type="video/mp4"
+														/>
+													</video>
+												)
 											) : (
 												<p
 													style={{
 														fontFamily: "Lexend",
 													}}
 												>
-													No image provided
+													No evidence provided
 												</p>
 											)}
 											<div className="decoration_container">
@@ -247,6 +307,25 @@ const Activities = forwardRef((props, ref) => {
 											) : (
 												<p>No description provided</p>
 											)}
+											<div className="evidences_group">
+												{element.evidence_link.length
+													? element.evidence_link.map(
+															(evidence) => (
+																<a
+																	className="evidence_link"
+																	href={
+																		evidence.url
+																	}
+																	target="_blank"
+																>
+																	{evidence.label
+																		? evidence.label
+																		: "Link to evidences"}
+																</a>
+															)
+													  )
+													: ""}
+											</div>
 										</div>
 									</div>
 								</div>
@@ -420,7 +499,7 @@ const Main = styled.div`
 		}
 		.content_container {
 			width: 90%;
-			height: 400px;
+			min-height: 550px;
 			/* padding: 10px; */
 			margin-top: 3px;
 			background: var(--second-color);
@@ -431,6 +510,7 @@ const Main = styled.div`
 			box-shadow: inset 0px 0px 60px -10px var(--fourth-color);
 			.content_pages {
 				display: flex;
+				align-items: flex-start;
 				width: 100%;
 				height: 100%;
 				min-height: 450px;
@@ -444,7 +524,7 @@ const Main = styled.div`
 				.page {
 					position: relative;
 					width: 100%;
-					height: 250px;
+					min-height: max-content;
 					/* outline: 1px solid green; */
 					display: flex;
 					flex: 0 0 100%;
@@ -457,7 +537,7 @@ const Main = styled.div`
 					}
 					.page_content {
 						display: flex;
-						/* align-items: top; */
+						/* align-items: flex-start; */
 						justify-content: center;
 						gap: 25px;
 						width: calc(100% - 100px);
@@ -466,7 +546,18 @@ const Main = styled.div`
 						.content_image {
 							width: 100%;
 							min-height: 150px;
+							height: max-content;
 							position: relative;
+							display: flex;
+							align-items: center;
+							img {
+								width: 100%;
+								height: auto;
+							}
+							video {
+								width: 100%;
+								height: auto;
+							}
 							p {
 								width: 100%;
 								height: 100%;
@@ -543,9 +634,11 @@ const Main = styled.div`
 						}
 						.content_description {
 							width: 100%;
+							height: max-content;
 							outline: 2px solid var(--fourth-color);
 							border-radius: 1px;
 							padding: 5px;
+							text-align: center;
 							.description_indicator {
 								color: var(--third-color);
 								font-weight: bold;
@@ -567,6 +660,19 @@ const Main = styled.div`
 								.calendar_date_indicator {
 									max-width: 25px;
 									height: auto;
+								}
+							}
+							.evidences_group {
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								.evidence_link {
+									color: var(--third-color);
+									font-family: Lexend;
+									display: flex;
+								}
+								.evidence_link:hover {
+									text-decoration: underline;
 								}
 							}
 						}
@@ -654,17 +760,17 @@ const Main = styled.div`
 	}
 	@media (max-width: 810px) {
 		.content_container {
-			height: 600px;
+			height: 700px;
 		}
 	}
 	@media (max-width: 450px) {
 		.content_container {
-			height: 700px;
+			height: 800px;
 		}
 	}
 	@media (max-width: 380px) {
 		.content_container {
-			height: 800px;
+			height: 1000px;
 		}
 	}
 `;

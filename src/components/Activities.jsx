@@ -165,7 +165,7 @@ const Activities = forwardRef((props, ref) => {
 							setModalState(true);
 						}}
 					>
-						Activities résumé
+						Activities summary
 					</button>
 				</div>
 				<div className="indicator_container">

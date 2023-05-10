@@ -77,6 +77,19 @@ const ProjectDescription = (props) => {
 							</tr>
 						</tbody>
 					</table>
+					<div className="mobile_display">
+						<span>🤳🏼</span>
+						<h4>
+							For the summary, please follow{" "}
+							<a
+								href="https://drive.google.com/drive/folders/1AKggq4zqF6F_KqvEUIGCH_fGh9WfHQm_?usp=sharing"
+								className="mobile_version_link"
+							>
+								this link
+							</a>
+							.
+						</h4>
+					</div>
 				</div>
 			</div>
 		</Main>
@@ -158,6 +171,27 @@ const Main = styled.div`
 					}
 				}
 			}
+			.mobile_display {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				font-size: 25px;
+				.mobile_version_link {
+					color: var(--third-color);
+					text-decoration: underline;
+				}
+				a {
+					cursor: pointer;
+				}
+				span {
+					margin: 0;
+					font-size: 45px;
+				}
+			}
 			.modal_title {
 				font-family: Russo One;
 				margin: 15px;
@@ -182,6 +216,18 @@ const Main = styled.div`
 		left: 0;
 		background: var(--third-color);
 	}
+	@media (max-width: 580px) {
+		.table {
+			display: none;
+		}
+	}
+
+	@media (min-width: 580px) {
+		.mobile_display {
+			display: none !important;
+		}
+	}
+
 	@keyframes bluring {
 		0% {
 			backdrop-filter: blur(0px);

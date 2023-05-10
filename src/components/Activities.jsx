@@ -8,6 +8,8 @@ import Music from "/src/assets/logo/activities/piano.svg";
 import Editing from "/src/assets/logo/activities/video-editing.svg";
 import Portfolio from "/src/assets/logo/activities/portfolio.svg";
 
+import ProjectDescription from "./ProjectDescription";
+
 // Images for evidences
 import MachineLearning from "/src/assets/images/evidences/machineLearning.png";
 import Cpp from "/src/assets/images/evidences/Cpp.png";
@@ -20,6 +22,8 @@ import Video from "/src/assets/rickrolled.mp4";
 const Activities = forwardRef((props, ref) => {
 	const slider = useRef(null);
 	const [currentPage, setCurrentPage] = useState(0);
+
+	const [modalState, setModalState] = useState(false);
 
 	const data = [
 		{
@@ -105,7 +109,12 @@ const Activities = forwardRef((props, ref) => {
 			activity_descr:
 				"I really enjoyed doing this portfolio as it allowed me to use what I learned from my years at the EPHEC. I also enjoyed imaginating all the components in this page and the way they will look like. I think it can even be usefull to find a job in the futur. This portfolio is made ",
 			activity_date: "2022-2023",
-			evidence_link: "",
+			evidence_link: [
+				{
+					url: "https://github.com/Pourbaix/portfoliov1",
+					label: "Link to the source code",
+				},
+			],
 		},
 	];
 
@@ -149,6 +158,16 @@ const Activities = forwardRef((props, ref) => {
 					</span>
 					Activities
 				</h1>
+				<div className="button_container">
+					<button
+						className="enter_button"
+						onClick={() => {
+							setModalState(true);
+						}}
+					>
+						Activities résumé
+					</button>
+				</div>
 				<div className="indicator_container">
 					<div className="indicator_line"></div>
 					<div
@@ -310,13 +329,14 @@ const Activities = forwardRef((props, ref) => {
 											<div className="evidences_group">
 												{element.evidence_link.length
 													? element.evidence_link.map(
-															(evidence) => (
+															(evidence, key) => (
 																<a
 																	className="evidence_link"
 																	href={
 																		evidence.url
 																	}
 																	target="_blank"
+																	key={key}
 																>
 																	{evidence.label
 																		? evidence.label
@@ -360,6 +380,12 @@ const Activities = forwardRef((props, ref) => {
 					</a>
 				</div>
 			</div>
+			<ProjectDescription
+				toggleModal={modalState}
+				closeFuntion={() => {
+					setModalState(false);
+				}}
+			/>
 		</Main>
 	);
 });

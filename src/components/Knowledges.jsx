@@ -48,7 +48,7 @@ const Knowledges = forwardRef((props, ref) => {
 			logo: TypeScriptLogo,
 			color_theme: "rgb(0, 122, 204, 0.5)",
 			widthSkill: "40%",
-			widthLove: "40%",
+			widthLove: "60%",
 			description:
 				"I began learning Typescript at the same time than Vue. I understand the positive points of this language compare to JavaScript, but when you code in TypeScript, it is much more time consuming!",
 		},

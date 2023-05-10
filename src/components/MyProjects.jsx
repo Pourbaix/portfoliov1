@@ -9,7 +9,6 @@ import {
 	SiNestjs,
 } from "react-icons/si";
 import { IoLogoVue } from "react-icons/io5";
-import ProjectDescription from "./ProjectDescription";
 import { useState } from "react";
 
 import TaalToolBoxLogo from "/src/assets/logo/projects/taalToolBox.svg";

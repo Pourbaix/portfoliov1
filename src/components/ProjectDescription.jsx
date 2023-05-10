@@ -4,19 +4,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const ProjectDescription = (props) => {
-	const [modalVisibility, setModalVisibility] = useState(true);
+	const [modalVisibility, setModalVisibility] = useState(props.toggleModal);
 
 	const modal = useRef(null);
 	const modalContent = useRef(null);
 
 	const toggleModal = () => {
-		if (modalVisibility) {
-			modal.current.style.display = "none";
-			setModalVisibility(false);
-		} else {
+		if (props.toggleModal) {
 			modal.current.style.display = "flex";
-			setModalVisibility(true);
+		} else {
+			modal.current.style.display = "none";
 		}
+		setModalVisibility(props.toggleModal);
 	};
 
 	useEffect(() => {
@@ -27,11 +26,57 @@ const ProjectDescription = (props) => {
 		<Main ref={modal}>
 			<div className="modal_content" ref={modalContent}>
 				<div className="modal_body">
-					<div className="modal_closer" onClick={toggleModal}>
+					<div
+						className="modal_closer"
+						onClick={() => {
+							props.closeFuntion();
+						}}
+					>
 						X
 					</div>
-					<p>Project description</p>
-					<p>Pass data via props </p>
+					<p className="modal_title">Hours resume table</p>
+					<table className="table">
+						<thead>
+							<tr>
+								<th>Hours resume table</th>
+								<th>OCR course 1: Machine Learning</th>
+								<th>OCR course 2: C++</th>
+								<th>EPHEC Hackathon</th>
+								<th>Music: Piano</th>
+								<th>Video editing</th>
+								<th>Portfolio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Realisation period</th>
+								<th>2021-2022</th>
+								<th>2022 Summer Holidays</th>
+								<th>2022</th>
+								<th>2018-2023</th>
+								<th>2017-2023</th>
+								<th>2022-2023</th>
+							</tr>
+							<tr className="mark">
+								<th>Number of hours valorized</th>
+								<th>10h</th>
+								<th>10h</th>
+								<th>10h</th>
+								<th>10h</th>
+								<th>10h</th>
+								<th>10h</th>
+							</tr>
+							<tr>
+								<th>Number of real hours</th>
+								<th>12h</th>
+								<th>20h</th>
+								<th>48h</th>
+								<th>800h+</th>
+								<th>100h</th>
+								<th>50h</th>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</Main>
@@ -56,7 +101,7 @@ const Main = styled.div`
 	align-items: center;
 	.modal_content {
 		width: 0;
-		height: 70vh;
+		height: 75vh;
 		background: var(--main-color);
 		position: relative;
 		opacity: 1;
@@ -77,6 +122,45 @@ const Main = styled.div`
 				top: 0;
 				padding: 15px;
 				cursor: pointer;
+			}
+			.table {
+				width: 95%;
+				/* border: 1px solid green; */
+				height: 100%;
+				box-sizing: border-box;
+				font-size: 16px;
+				margin-bottom: 25px;
+				thead th:nth-child(1) {
+					background: var(--amin-color);
+					color: var(--second-color);
+					font-family: russo one;
+					font-size: 20px;
+					border: 1px solid var(--second-color);
+				}
+				thead th {
+					background: var(--third-color);
+					color: var(--main-color);
+				}
+				tbody th:nth-child(1) {
+					background: var(--second-color);
+					color: var(--main-color);
+					font-family: russo one;
+				}
+				tbody th {
+					background: var(--fourth-color);
+					color: var(--main-color);
+					border: var(--main-color);
+				}
+				.mark {
+					* {
+						color: var(--third-color);
+						font-size: 18px;
+					}
+				}
+			}
+			.modal_title {
+				font-family: Russo One;
+				margin: 15px;
 			}
 		}
 	}

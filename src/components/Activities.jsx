@@ -17,7 +17,7 @@ import PortfolioScreen from "/src/assets/images/evidences/Portfolio.png";
 import HackathonCertif from "/src/assets/images/evidences/hackathon.png";
 
 //Video for evidences
-import Video from "/src/assets/rickrolled.mp4";
+import Video from "/src/assets/piano.mp4";
 
 const Activities = forwardRef((props, ref) => {
 	const slider = useRef(null);

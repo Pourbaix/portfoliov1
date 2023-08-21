@@ -9,7 +9,7 @@ const AboutMe = forwardRef((props, ref) => {
 			<div className="content">
 				<div className="profile_pic">
 					<img src={ProfilePic} />
-					<p className="credit">
+					{/* <p className="credit">
 						Credits to{" "}
 						<a
 							href="https://mvo.artstation.com/projects/gJO9kZ"
@@ -18,7 +18,7 @@ const AboutMe = forwardRef((props, ref) => {
 						>
 							Mikhail Vozdvizhensky
 						</a>
-					</p>
+					</p> */}
 				</div>
 				<div className="about_content">
 					<div className="header">
@@ -114,7 +114,7 @@ const Main = styled.div`
 			img {
 				height: auto;
 				width: auto;
-				max-width: 250px;
+				max-width: 220px;
 				max-height: 350px;
 				aspect-ratio: 1/1;
 				opacity: 0;
@@ -146,12 +146,12 @@ const Main = styled.div`
 		.profile_pic:hover {
 			transform: scale(1.02);
 			transition: 0.5s ease;
-			filter: saturate(1);
-			.credit {
+			/* filter: saturate(1); */
+			/* .credit {
 				top: 102%;
 				opacity: 1;
 				transition: 0.5s ease;
-			}
+			} */
 		}
 		.about_content {
 			display: flex;
@@ -240,6 +240,10 @@ const Main = styled.div`
 	.content:hover {
 		transform: scale(1.02);
 		transition: 0.8s ease;
+		.profile_pic {
+			transition: 0.5s ease;
+			filter: saturate(1);
+		}
 	}
 	@media (max-width: 1160px) {
 		.content {

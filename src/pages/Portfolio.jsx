@@ -98,9 +98,9 @@ function Portfolio() {
 				{/* <Loading /> */}
 			</Content>
 			<CornerLogo />
-			<div className="devmode">
+			{/* <div className="devmode">
 				<p>In development</p>
-			</div>
+			</div> */}
 		</Main>
 	);
 }

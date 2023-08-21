@@ -18,7 +18,12 @@ function SocialBar() {
 				<a className="element" id="discord">
 					<RiDiscordFill className="icon" />
 				</a>
-				<a className="element" id="steam">
+				<a
+					className="element"
+					href="https://linkedin.com/in/michaël-pourbaix-7094271a5"
+					target="_blank"
+					id="linkedin"
+				>
 					<RiLinkedinBoxFill className="icon" />
 				</a>
 				<div className="line"></div>
